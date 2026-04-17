@@ -1,0 +1,1800 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Compass Housing Society - Premium Real Estate | Home 2</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    :root {
+      --primary: #6A5337;
+      --accent: #C69050;
+      --light: #FFFFFF;
+      --dark: #000000;
+      --dark-bg: #121212;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      color: var(--dark);
+      background-color: var(--light);
+      transition: background-color 0.3s, color 0.3s;
+    }
+
+    h1 { font-size: 46px; line-height: 1.2; font-weight: 800; }
+    h2 { font-size: 36px; line-height: 1.3; font-weight: 700; }
+    h3 { font-size: 24px; line-height: 1.4; font-weight: 600; }
+    h4, h5, h6 { font-size: 20px; line-height: 1.4; font-weight: 600; }
+    li, span, p { font-size: 18px; line-height: 1.6; font-weight: 400; }
+    a { text-decoration: none; color: inherit; }
+    ul { list-style: none; padding-left: 0; margin-bottom: 0; }
+
+    body::after {
+      content: "";
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background-image: url("Images/transparent-logo.jpeg");
+      background-repeat: no-repeat;
+      background-position: center;
+      background-size: 570px auto;
+      opacity: 0.10;
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    .page-wrapper {
+      max-width: 1920px;
+      margin: 0 auto;
+      min-height: 100vh;
+      position: relative;
+      overflow-x: hidden;
+      padding-top: 82px;
+      background-color: var(--light);
+      transition: background-color 0.3s;
+    }
+
+    .content-layer { 
+      position: relative; 
+      z-index: 1;
+      min-height: calc(100vh - 200px);
+    }
+
+    header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      z-index: 100;
+      background: var(--primary);
+      box-shadow: 0 8px 22px rgba(0, 0, 0, 0.55);
+      transition: background-color 0.3s;
+    }
+
+    .navbar-custom { 
+      display: flex; 
+      align-items: center; 
+      justify-content: space-between; 
+      gap: 24px; 
+      position: relative;
+      padding: 12px 40px;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-weight: 800;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      white-space: nowrap;
+      color: var(--light);
+    }
+
+    .brand img { 
+      width: 58px; 
+      height: 58px; 
+      object-fit: cover; 
+      border-radius: 8px;
+      border: 2px solid var(--light); 
+      opacity: 0.97; 
+      background: transparent; 
+    }
+
+    .nav-menu { 
+      display: flex; 
+      align-items: center; 
+      gap: 24px; 
+      flex: 1; 
+      justify-content: center; 
+      flex-wrap: wrap; 
+    }
+
+    .nav-item { position: relative; }
+    .nav-link-custom {
+      color: var(--light);
+      padding: 4px 0;
+      opacity: 0.9;
+      position: relative;
+      cursor: pointer;
+      display: inline-block;
+      transition: color 0.25s ease, opacity 0.25s ease;
+      font-weight: 500;
+    }
+
+    .nav-link-custom::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      bottom: -3px;
+      width: 0%;
+      height: 2px;
+      background-color: var(--accent);
+      transition: width 0.25s ease;
+    }
+
+    .nav-link-custom:hover::after { width: 100%; }
+    .dropdown-toggle-custom::after { content: " ▾"; position: static; width: auto; height: auto; background: none; margin-left: 4px; }
+
+    .dropdown-menu-custom {
+      position: absolute;
+      left: 0;
+      top: calc(100% + 6px);
+      background-color: var(--primary);
+      border-radius: 10px;
+      border: 1px solid rgba(248, 250, 252, 0.12);
+      min-width: 190px;
+      display: none;
+      padding: 6px 0;
+      z-index: 120;
+      box-shadow: 0 12px 20px rgba(0, 0, 0, 0.6);
+    }
+
+    .dropdown-menu-custom li a {
+      display: block;
+      padding: 8px 18px;
+      color: var(--light);
+      white-space: nowrap;
+      opacity: 0.9;
+      transition: background-color 0.25s ease, opacity 0.25s ease, color 0.25s ease;
+      font-weight: 500;
+    }
+
+    .dropdown-menu-custom li a:hover { background-color: rgba(243, 243, 250, 0.15); opacity: 1; color: var(--accent); }
+    .nav-item.dropdown.open>.dropdown-menu-custom { display: block; }
+
+    .nav-actions { 
+      display: flex; 
+      align-items: center; 
+      gap: 12px; 
+      margin-left: auto; 
+    }
+
+    .btn-animated { 
+      transition: transform 0.25s ease, box-shadow 0.25s ease, filter 0.25s ease; 
+      box-shadow: 0 6px 16px rgba(0, 0, 0, 0.45); 
+    }
+
+    .btn-animated:hover { 
+      transform: translateY(-2px); 
+      box-shadow: 0 10px 26px rgba(0, 0, 0, 0.7); 
+      filter: brightness(0.96); 
+    }
+
+    .btn-register {
+      background: var(--accent);
+      color: var(--dark);
+      border: none;
+      padding: 8px 15px;
+      border-radius: 999px;
+      font-weight: 600;
+      cursor: pointer;
+      white-space: nowrap;
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-size: 16px;
+    }
+
+    .theme-toggle {
+      position: relative;
+      width: 70px;
+      height: 34px;
+      border-radius: 34px;
+      background: linear-gradient(145deg, #4a4a4a, #2a2a2a);
+      border: 2px solid rgba(255, 255, 255, 0.3);
+      cursor: pointer;
+      transition: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+      box-shadow: 
+        inset 0 2px 4px rgba(0, 0, 0, 0.3),
+        0 4px 12px rgba(0, 0, 0, 0.25);
+      overflow: hidden;
+    }
+
+    .theme-toggle::before {
+      content: '';
+      position: absolute;
+      top: 3px;
+      left: 3px;
+      width: 26px;
+      height: 26px;
+      background: linear-gradient(145deg, #FFD700, #FFA500);
+      border-radius: 50%;
+      transition: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+      z-index: 2;
+      box-shadow: 
+        0 2px 4px rgba(0, 0, 0, 0.3),
+        inset 0 -1px 2px rgba(255, 255, 255, 0.2);
+    }
+
+    .theme-toggle::after {
+      content: '☀️';
+      position: absolute;
+      top: 50%;
+      right: 10px;
+      transform: translateY(-50%);
+      font-size: 14px;
+      opacity: 0.9;
+      filter: drop-shadow(0 1px 2px rgba(0, 0, 0, 0.3));
+      transition: all 0.4s ease;
+    }
+
+    .theme-toggle .moon {
+      position: absolute;
+      top: 50%;
+      left: 10px;
+      transform: translateY(-50%);
+      font-size: 14px;
+      opacity: 0.3;
+      filter: drop-shadow(0 1px 2px rgba(0, 0, 0, 0.3));
+      transition: all 0.4s ease;
+    }
+
+    body.dark-mode .theme-toggle {
+      background: linear-gradient(145deg, #2a2a2a, #1a1a1a);
+      border-color: rgba(255, 255, 255, 0.15);
+    }
+
+    body.dark-mode .theme-toggle::before {
+      left: calc(100% - 29px);
+      background: linear-gradient(145deg, #e0e0e0, #a0a0a0);
+      box-shadow: 
+        0 0 8px rgba(255, 255, 255, 0.2),
+        inset 0 -1px 2px rgba(0, 0, 0, 0.2);
+    }
+
+    body.dark-mode .theme-toggle::after {
+      opacity: 0.3;
+    }
+
+    body.dark-mode .theme-toggle .moon {
+      opacity: 0.9;
+    }
+
+    .theme-toggle:hover::before {
+      transform: scale(1.1);
+    }
+
+    body.dark-mode .theme-toggle:hover::before {
+      box-shadow: 
+        0 0 12px rgba(255, 255, 255, 0.3),
+        inset 0 -1px 2px rgba(0, 0, 0, 0.2);
+    }
+
+    .menu-toggle {
+      display: none;
+      border: 1px solid var(--light);
+      background: transparent;
+      font-size: 22px;
+      line-height: 1;
+      cursor: pointer;
+      color: var(--light);
+      padding: 4px 10px;
+      border-radius: 4px;
+    }
+
+    .mobile-actions {
+      display: none;
+      align-items: center;
+      gap: 12px;
+      margin-left: auto;
+    }
+
+    /* Home 2 New Sections */
+    
+    /* Hero Banner - New Design */
+    .hero-banner-home2 {
+      padding: 120px 20px 80px;
+      background: linear-gradient(rgba(106, 83, 55, 0.85), rgba(106, 83, 55, 0.85)),
+                  url('https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80') center/cover no-repeat;
+      color: var(--light);
+      position: relative;
+      overflow: hidden;
+      text-align: center;
+    }
+
+    .hero-banner-content {
+      max-width: 1000px;
+      margin: 0 auto;
+      position: relative;
+      z-index: 2;
+    }
+
+    .hero-badge {
+      display: inline-block;
+      background: var(--accent);
+      color: var(--dark);
+      padding: 12px 30px;
+      border-radius: 50px;
+      font-weight: 700;
+      font-size: 16px;
+      margin-bottom: 30px;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+    }
+
+    .hero-title-home2 {
+      font-size: 60px;
+      font-weight: 800;
+      line-height: 1.1;
+      margin-bottom: 30px;
+      color: var(--light);
+    }
+
+    .hero-title-home2 span {
+      color: var(--accent);
+      position: relative;
+    }
+
+    .hero-description-home2 {
+      font-size: 20px;
+      line-height: 1.7;
+      max-width: 700px;
+      margin: 0 auto 40px;
+      opacity: 0.9;
+    }
+
+    .hero-search-box {
+      background: var(--light);
+      border-radius: 15px;
+      padding: 20px;
+      max-width: 800px;
+      margin: 40px auto 0;
+      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.3);
+    }
+
+    .search-tabs {
+      display: flex;
+      gap: 10px;
+      margin-bottom: 20px;
+      border-bottom: 2px solid rgba(106, 83, 55, 0.1);
+      padding-bottom: 15px;
+    }
+
+    .search-tab {
+      padding: 12px 30px;
+      background: transparent;
+      border: none;
+      border-radius: 8px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      color: var(--primary);
+    }
+
+    .search-tab.active {
+      background: var(--primary);
+      color: var(--light);
+    }
+
+    .search-form {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 15px;
+    }
+
+    .search-input {
+      padding: 15px;
+      border: 2px solid rgba(106, 83, 55, 0.2);
+      border-radius: 10px;
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-size: 16px;
+      transition: all 0.3s ease;
+    }
+
+    .search-input:focus {
+      outline: none;
+      border-color: var(--accent);
+    }
+
+    .search-btn {
+      grid-column: 1 / -1;
+      background: var(--accent);
+      color: var(--dark);
+      border: none;
+      padding: 18px;
+      border-radius: 10px;
+      font-weight: 700;
+      font-size: 18px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      font-family: 'Plus Jakarta Sans', sans-serif;
+    }
+
+    .search-btn:hover {
+      background: #d9a566;
+      transform: translateY(-2px);
+    }
+
+    /* Featured Cities Section */
+    .featured-cities {
+      padding: 80px 20px;
+    }
+
+    .section-header {
+      text-align: center;
+      max-width: 800px;
+      margin: 0 auto 50px;
+    }
+
+    .section-subtitle {
+      font-size: 16px;
+      font-weight: 600;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 15px;
+      display: block;
+    }
+
+    .section-title {
+      font-size: 48px;
+      font-weight: 800;
+      color: var(--primary);
+      margin-bottom: 20px;
+      line-height: 1.2;
+    }
+
+    .section-description {
+      font-size: 18px;
+      color: #666;
+      line-height: 1.7;
+    }
+
+    .cities-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 30px;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .city-card {
+      border-radius: 15px;
+      overflow: hidden;
+      position: relative;
+      height: 350px;
+      transition: all 0.4s ease;
+    }
+
+    .city-card:hover {
+      transform: translateY(-10px);
+    }
+
+    .city-image {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.6s ease;
+    }
+
+    .city-card:hover .city-image {
+      transform: scale(1.1);
+    }
+
+    .city-overlay {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      background: linear-gradient(to top, rgba(0,0,0,0.8), transparent);
+      padding: 30px;
+      color: var(--light);
+    }
+
+    .city-name {
+      font-size: 28px;
+      font-weight: 700;
+      margin-bottom: 10px;
+    }
+
+    .city-properties {
+      font-size: 16px;
+      opacity: 0.9;
+    }
+
+    /* Investment Opportunities */
+    .investment-section {
+      padding: 80px 20px;
+      background: linear-gradient(135deg, rgba(106, 83, 55, 0.05) 0%, rgba(198, 144, 80, 0.05) 100%);
+    }
+
+    .investment-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 50px;
+      align-items: center;
+    }
+
+    .investment-content h2 {
+      color: var(--primary);
+      margin-bottom: 20px;
+    }
+
+    .investment-features {
+      list-style: none;
+      margin: 30px 0;
+    }
+
+    .investment-features li {
+      margin-bottom: 20px;
+      display: flex;
+      align-items: flex-start;
+      gap: 15px;
+    }
+
+    .investment-features i {
+      color: var(--accent);
+      font-size: 22px;
+      margin-top: 5px;
+    }
+
+    .investment-image {
+      border-radius: 20px;
+      overflow: hidden;
+      box-shadow: 20px 20px 0 rgba(198, 144, 80, 0.1);
+    }
+
+    .investment-image img {
+      width: 100%;
+      height: auto;
+      display: block;
+      transition: transform 0.6s ease;
+    }
+
+    .investment-image:hover img {
+      transform: scale(1.05);
+    }
+
+    /* Team Section */
+    .team-section {
+      padding: 80px 20px;
+    }
+
+    .team-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 30px;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .team-card {
+      background: var(--light);
+      border-radius: 15px;
+      overflow: hidden;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+      transition: all 0.4s ease;
+      text-align: center;
+    }
+
+    .team-card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+    }
+
+    .team-image {
+      height: 250px;
+      overflow: hidden;
+    }
+
+    .team-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.6s ease;
+    }
+
+    .team-card:hover .team-image img {
+      transform: scale(1.1);
+    }
+
+    .team-info {
+      padding: 25px;
+    }
+
+    .team-name {
+      font-size: 22px;
+      font-weight: 700;
+      color: var(--primary);
+      margin-bottom: 8px;
+    }
+
+    .team-role {
+      color: var(--accent);
+      font-weight: 600;
+      margin-bottom: 15px;
+      display: block;
+    }
+
+    .team-social {
+      display: flex;
+      justify-content: center;
+      gap: 15px;
+      margin-top: 20px;
+    }
+
+    .team-social a {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      background: rgba(106, 83, 55, 0.1);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--primary);
+      transition: all 0.3s ease;
+    }
+
+    .team-social a:hover {
+      background: var(--accent);
+      color: var(--light);
+      transform: translateY(-3px);
+    }
+
+    /* Statistics Banner */
+    .stats-banner {
+      padding: 80px 20px;
+      background: linear-gradient(135deg, var(--primary) 0%, #5a4730 100%);
+      color: var(--light);
+    }
+
+    .stats-container {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 40px;
+      max-width: 1200px;
+      margin: 0 auto;
+      text-align: center;
+    }
+
+    .stat-item-home2 {
+      padding: 20px;
+    }
+
+    .stat-number-home2 {
+      font-size: 48px;
+      font-weight: 800;
+      color: var(--accent);
+      display: block;
+      margin-bottom: 10px;
+    }
+
+    .stat-label-home2 {
+      font-size: 18px;
+      font-weight: 600;
+      opacity: 0.9;
+    }
+
+    /* Property Types */
+    .property-types {
+      padding: 80px 20px;
+    }
+
+    .types-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 30px;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .type-card {
+      background: var(--light);
+      border-radius: 15px;
+      padding: 40px 30px;
+      text-align: center;
+      transition: all 0.4s ease;
+      border: 2px solid rgba(106, 83, 55, 0.1);
+    }
+
+    .type-card:hover {
+      border-color: var(--accent);
+      transform: translateY(-10px);
+      box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+    }
+
+    .type-icon {
+      width: 80px;
+      height: 80px;
+      background: var(--accent);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 25px;
+      color: var(--light);
+      font-size: 36px;
+    }
+
+    .type-card h3 {
+      font-size: 22px;
+      color: var(--primary);
+      margin-bottom: 15px;
+    }
+
+    .type-card p {
+      color: #666;
+      line-height: 1.6;
+    }
+
+    /* Footer */
+    .site-footer {
+      background: var(--primary);
+      color: var(--light);
+      font-size: 14px;
+      width: 100%;
+      transition: background-color 0.3s;
+      padding: 30px 0 20px;
+      min-height: 180px;
+      position: relative;
+      margin-top: 0;
+    }
+
+    .footer-content {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 20px;
+      gap: 30px;
+    }
+
+    .footer-column {
+      margin-bottom: 15px;
+    }
+
+    .footer-brand-column {
+      grid-column: span 2;
+    }
+
+    .footer-brand {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 15px;
+    }
+
+    .footer-logo {
+      width: 60px;
+      height: 60px;
+      object-fit: cover;
+      border-radius: 12px;
+      border: 2px solid var(--light);
+    }
+
+    .footer-brand-text h3 {
+      font-size: 24px;
+      font-weight: 700;
+      margin-bottom: 12px;
+      color: var(--light);
+    }
+
+    .footer-brand-text p {
+      font-size: 15px;
+      opacity: 0.9;
+      max-width: 350px;
+      margin-bottom: 20px;
+      line-height: 1.6;
+    }
+
+    .footer-social-icons {
+      display: flex;
+      gap: 12px;
+      margin-top: 10px;
+    }
+
+    .footer-social-icon {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.1);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--light);
+      font-size: 18px;
+      transition: all 0.3s ease;
+      border: 1px solid rgba(255, 255, 255, 0.2);
+    }
+
+    .footer-social-icon:hover {
+      background: var(--accent);
+      color: var(--dark);
+      transform: translateY(-3px);
+    }
+
+    .footer-column h4 {
+      font-size: 20px;
+      font-weight: 700;
+      margin-bottom: 20px;
+      color: var(--light);
+      position: relative;
+      padding-bottom: 8px;
+    }
+
+    .footer-links {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    .footer-links li {
+      margin-bottom: 12px;
+    }
+
+    .footer-links li a {
+      color: rgba(255, 255, 255, 0.85);
+      text-decoration: none;
+      transition: all 0.3s ease;
+      display: inline-block;
+      font-size: 15px;
+      font-weight: 500;
+    }
+
+    .footer-links li a:hover {
+      color: var(--accent);
+      transform: translateX(5px);
+    }
+
+    .footer-links li i {
+      margin-right: 8px;
+      color: var(--accent);
+      width: 16px;
+      text-align: center;
+    }
+
+    .footer-contact-info {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    .footer-contact-info li {
+      margin-bottom: 15px;
+      display: flex;
+      align-items: flex-start;
+      color: rgba(255, 255, 255, 0.85);
+      font-size: 15px;
+      line-height: 1.5;
+    }
+
+    .footer-contact-info li i {
+      margin-right: 12px;
+      color: var(--accent);
+      font-size: 16px;
+      margin-top: 3px;
+      flex-shrink: 0;
+    }
+
+    .house-image-column {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .house-image-wrapper {
+      width: 100%;
+      height: 180px;
+      border-radius: 12px;
+      overflow: hidden;
+      position: relative;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+      border: 3px solid var(--accent);
+    }
+
+    .house-image {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.5s ease;
+    }
+
+    .house-image:hover {
+      transform: scale(1.05);
+    }
+
+    .house-caption {
+      margin-top: 15px;
+      text-align: center;
+      color: var(--light);
+      font-size: 16px;
+      font-weight: 500;
+      opacity: 0.9;
+    }
+
+    .footer-bottom {
+      margin-top: 20px;
+      text-align: center;
+      font-size: 14px;
+      opacity: 0.8;
+      padding-top: 15px;
+      border-top: 1px solid rgba(255, 255, 255, 0.2);
+      width: 100%;
+      grid-column: 1 / -1;
+    }
+
+    .back-to-top {
+      position: fixed;
+      bottom: 30px;
+      right: 30px;
+      width: 50px;
+      height: 50px;
+      background-color: var(--primary);
+      color: white;
+      border: none;
+      border-radius: 50%;
+      font-size: 24px;
+      cursor: pointer;
+      z-index: 99;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      opacity: 0;
+      visibility: hidden;
+      transition: all 0.3s ease;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    }
+
+    .back-to-top.show {
+      opacity: 1;
+      visibility: visible;
+    }
+
+    .back-to-top:hover {
+      background-color: var(--accent);
+      transform: translateY(-3px);
+      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+    }
+
+    /* Dark Mode Styles - UPDATED */
+    body.dark-mode {
+      background-color: #000000;
+      color: #ffffff;
+    }
+
+    body.dark-mode .page-wrapper {
+      background-color: #000000;
+    }
+
+    body.dark-mode header,
+    body.dark-mode .site-footer {
+      background-color: #1a1a1a;
+    }
+
+    body.dark-mode .nav-menu {
+      background: #1a1a1a;
+    }
+
+    body.dark-mode .dropdown-menu-custom {
+      background-color: #2a2a2a;
+      border-color: rgba(255, 255, 255, 0.1);
+    }
+
+    body.dark-mode .brand img {
+      border-color: #ffffff;
+    }
+
+    body.dark-mode .brand {
+      color: #ffffff;
+    }
+
+    body.dark-mode .nav-link-custom {
+      color: #ffffff;
+    }
+
+    body.dark-mode .dropdown-menu-custom li a {
+      color: #ffffff;
+    }
+
+    body.dark-mode .footer-social-icon {
+      background: rgba(255, 255, 255, 0.1);
+      color: #ffffff;
+      border-color: rgba(255, 255, 255, 0.2);
+    }
+
+    body.dark-mode .footer-social-icon:hover {
+      background: var(--accent);
+      color: var(--dark);
+    }
+
+    body.dark-mode .section-title {
+      color: #ffffff;
+    }
+
+    body.dark-mode .section-description {
+      color: #cccccc;
+    }
+
+    body.dark-mode .city-card {
+      background: #000000;
+    }
+
+    body.dark-mode .city-overlay {
+      background: linear-gradient(to top, rgba(0,0,0,0.9), transparent);
+    }
+
+    body.dark-mode .type-card {
+      background: #000000;
+      border-color: rgba(255, 255, 255, 0.1);
+    }
+
+    body.dark-mode .type-card h3 {
+      color: #ffffff;
+    }
+
+    body.dark-mode .type-card p {
+      color: #cccccc;
+    }
+
+    body.dark-mode .team-card {
+      background: #000000;
+      box-shadow: 0 10px 30px rgba(255, 255, 255, 0.05);
+    }
+
+    body.dark-mode .team-card:hover {
+      box-shadow: 0 20px 40px rgba(255, 255, 255, 0.1);
+    }
+
+    body.dark-mode .team-name {
+      color: #ffffff;
+    }
+
+    body.dark-mode .team-role {
+      color: var(--accent);
+    }
+
+    body.dark-mode .team-info p {
+      color: #cccccc;
+    }
+
+    body.dark-mode .team-social a {
+      background: rgba(255, 255, 255, 0.1);
+      color: #ffffff;
+    }
+
+    body.dark-mode .team-social a:hover {
+      background: var(--accent);
+      color: var(--dark);
+    }
+
+    body.dark-mode .investment-section {
+      background: #000000;
+    }
+
+    body.dark-mode .investment-content h2 {
+      color: #ffffff;
+    }
+
+    body.dark-mode .investment-content p {
+      color: #cccccc;
+    }
+
+    body.dark-mode .investment-features li div h4 {
+      color: #ffffff;
+    }
+
+    body.dark-mode .investment-features li div p {
+      color: #cccccc;
+    }
+
+    body.dark-mode .search-input {
+      background: #2a2a2a;
+      border-color: rgba(255, 255, 255, 0.2);
+      color: #ffffff;
+    }
+
+    body.dark-mode .search-tab {
+      color: #ffffff;
+    }
+
+    body.dark-mode .search-tab.active {
+      background: var(--accent);
+      color: var(--dark);
+    }
+
+    body.dark-mode .back-to-top {
+      background-color: var(--accent);
+      color: var(--dark);
+    }
+
+    body.dark-mode .back-to-top:hover {
+      background-color: #d9a566;
+    }
+
+    
+    body.dark-mode .investment-section {
+      background: #000000;
+    }
+
+   
+
+   
+
+    body.dark-mode .hero-search-box {
+      background: #1a1a1a;
+    }
+
+    body.dark-mode .search-tabs {
+      border-bottom-color: rgba(255, 255, 255, 0.1);
+    }
+
+    body.dark-mode .investment-image {
+      box-shadow: 20px 20px 0 rgba(255, 255, 255, 0.05);
+    }
+
+    /* Responsive Design */
+    @media (max-width: 1030px) {
+      .navbar-custom { 
+        padding: 10px 16px;
+        gap: 10px; 
+        justify-content: space-between;
+        flex-wrap: wrap;
+      }
+      .brand {
+        order: 1;
+        flex: 1;
+      }
+      .nav-actions.desktop-actions {
+        display: none;
+      }
+      .mobile-actions {
+        display: flex;
+        order: 2;
+      }
+      .menu-toggle {
+        display: inline-flex;
+        order: 3;
+      }
+      .nav-menu {
+        position: fixed;
+        top: 0;
+        right: -280px;
+        width: 280px;
+        height: auto;
+        max-height: 90vh;
+        flex-direction: column;
+        align-items: flex-start;
+        justify-content: flex-start;
+        background: var(--primary);
+        padding: 20px;
+        border-radius: 0 0 0 16px;
+        box-shadow: -12px 0 30px rgba(0, 0, 0, 0.85);
+        z-index: 110;
+        gap: 12px;
+        transition: right 0.3s ease;
+        border: 1px solid rgba(248, 250, 252, 0.6);
+        overflow-y: auto;
+        margin-top: 0;
+      }
+      body.dark-mode .nav-menu {
+        background: #1a1a1a;
+      }
+      .nav-menu.nav-open { right: 0; }
+      .nav-item { width: 100%; }
+      .nav-link-custom { width: 100%; padding: 10px 0; }
+      .dropdown-menu-custom { 
+        position: static; 
+        margin-top: 4px; 
+        background: rgba(255, 255, 255, 0.05); 
+        border-radius: 8px; 
+        border: none; 
+        box-shadow: none; 
+        padding: 0 0 4px 10px; 
+        display: none;
+      }
+      body.dark-mode .dropdown-menu-custom {
+        background: rgba(255, 255, 255, 0.05);
+      }
+      .dropdown-menu-custom li a { padding: 8px 0; font-size: 15px; opacity: 0.85; }
+      .nav-item.dropdown.open>.dropdown-menu-custom { display: block; }
+      
+      .investment-container {
+        grid-template-columns: 1fr;
+        gap: 40px;
+      }
+      
+      .hero-title-home2 {
+        font-size: 48px;
+      }
+    }
+    
+    @media (max-width: 768px) {
+      .hero-title-home2 {
+        font-size: 38px;
+      }
+      
+      .section-title {
+        font-size: 36px;
+      }
+      
+      .search-form {
+        grid-template-columns: 1fr;
+      }
+      
+      .search-tabs {
+        flex-wrap: wrap;
+        justify-content: center;
+      }
+      
+      .footer-content {
+        grid-template-columns: 1fr;
+        text-align: center;
+      }
+      
+      .footer-brand-column {
+        grid-column: span 1;
+      }
+      
+      .footer-brand,
+      .footer-column {
+        align-items: center;
+        text-align: center;
+      }
+    }
+    
+    @media (max-width: 576px) {
+      .page-wrapper { padding-top: 60px; }
+      .brand span { font-size: 14px; }
+      .brand img { width: 40px; height: 40px; }
+      .nav-menu {
+        width: 250px;
+        max-height: 85vh;
+        top: 60px;
+        right: -250px;
+      }
+      
+      .hero-title-home2 {
+        font-size: 32px;
+      }
+      
+      .section-title {
+        font-size: 28px;
+      }
+      
+      .hero-badge {
+        font-size: 14px;
+        padding: 10px 20px;
+      }
+      
+      .back-to-top {
+        width: 45px;
+        height: 45px;
+        font-size: 20px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="page-wrapper">
+    <div class="content-layer">
+      <header>
+        <nav class="navbar-custom">
+          <div class="brand">
+            <img src="Images/logo.jpeg" alt="Compass Housing Society Logo">
+            <span>Compass Housing<br> Society</span>
+          </div>
+
+          <div class="mobile-actions">
+            <div class="theme-toggle" aria-label="Toggle dark / light mode">
+              <span class="moon">🌙</span>
+            </div>
+            <a href="login.html">
+              <button class="btn-register btn-animated" type="button">Get in touch</button>
+            </a>
+          </div>
+
+          <ul class="nav-menu">
+            <li class="nav-item">
+              <a href="index.html" class="nav-link-custom">Home 1</a>
+            </li>
+            <li class="nav-item">
+              <a href="home2.html" class="nav-link-custom">Home 2</a>
+            </li>
+            <li class="nav-item">
+              <a href="aboutus.html" class="nav-link-custom">About Us</a>
+            </li>
+            <li class="nav-item dropdown">
+              <span class="nav-link-custom dropdown-toggle-custom">Services</span>
+              <ul class="dropdown-menu-custom">
+                <li><a href="services.html">Service</a></li>
+                <li><a href="servicedetails.html">Service Details</a></li>
+              </ul>
+            </li>
+            <li class="nav-item dropdown">
+              <span class="nav-link-custom dropdown-toggle-custom">Blog</span>
+              <ul class="dropdown-menu-custom">
+                <li><a href="blog.html">Blog</a></li>
+                <li><a href="blogdetails.html">Blog Details</a></li>
+              </ul>
+            </li>
+            <li class="nav-item dropdown">
+              <span class="nav-link-custom dropdown-toggle-custom">Contact Us</span>
+              <ul class="dropdown-menu-custom">
+                <li><a href="contactus.html">Contact Us</a></li>
+                <li><a href="additionalpage.html">404</a></li>
+                <li><a href="pricing.html">Pricing</a></li>
+                <li><a href="commingsoon.html">Comming soon</a></li>
+              </ul>
+            </li>
+          </ul>
+
+          <div class="nav-actions desktop-actions">
+            <div class="theme-toggle" aria-label="Toggle dark / light mode">
+              <span class="moon">🌙</span>
+            </div>
+            <a href="login.html">
+              <button class="btn-register btn-animated" type="button">Get in touch</button>
+            </a>
+          </div>
+
+          <button class="menu-toggle" type="button" aria-label="Toggle menu">☰</button>
+        </nav>
+      </header>
+
+      <main>
+        <!-- Hero Banner Section -->
+        <section class="hero-banner-home2">
+          <div class="hero-banner-content">
+            <h1 class="hero-title-home2">Find Your Dream Property with Expert Guidance</h1>
+            <p class="hero-description-home2">
+              Discover exclusive properties in prime locations worldwide. Our team of experts provides personalized service to help you find the perfect home or investment property.
+            </p>
+          </div>
+        </section>
+
+        <!-- Featured Cities Section -->
+        <section class="featured-cities">
+          <div class="section-header">
+            <h2 class="section-title">Featured Cities</h2>
+            <p class="section-description">
+              Explore our premium properties in the world's most desirable locations.
+            </p>
+          </div>
+          
+          <div class="cities-grid">
+            <div class="city-card">
+              <img src="https://images.unsplash.com/photo-1512453979798-5ea266f8880c?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="New York" class="city-image">
+              <div class="city-overlay">
+                <h3 class="city-name">New York</h3>
+                <p class="city-properties">125+ Premium Properties</p>
+              </div>
+            </div>
+            
+            <div class="city-card">
+              <img src="https://images.unsplash.com/photo-1502602898657-3e91760cbb34?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Paris" class="city-image">
+              <div class="city-overlay">
+                <h3 class="city-name">Paris</h3>
+                <p class="city-properties">89+ Luxury Apartments</p>
+              </div>
+            </div>
+            
+            <div class="city-card">
+              <img src="https://images.unsplash.com/photo-1536098561742-ca998e48cbcc?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Tokyo" class="city-image">
+              <div class="city-overlay">
+                <h3 class="city-name">Tokyo</h3>
+                <p class="city-properties">74+ Modern Residences</p>
+              </div>
+            </div>
+            
+            
+          </div>
+        </section>
+
+        <!-- Investment Opportunities Section -->
+        <section class="investment-section">
+          <div class="investment-container">
+            <div class="investment-content">
+              <h2>Premium Investment Opportunities</h2>
+              <p class="section-description">
+                Maximize your returns with our carefully curated real estate investment portfolio. We identify high-growth opportunities in emerging and established markets.
+              </p>
+              
+              <ul class="investment-features">
+                <li>
+                  <i class="fas fa-chart-line"></i>
+                  <div>
+                    <h4>High ROI Projects</h4>
+                    <p>Carefully selected properties with proven growth potential</p>
+                  </div>
+                </li>
+                <li>
+                  <i class="fas fa-shield-alt"></i>
+                  <div>
+                    <h4>Risk Management</h4>
+                    <p>Comprehensive due diligence and market analysis</p>
+                  </div>
+                </li>
+                <li>
+                  <i class="fas fa-globe"></i>
+                  <div>
+                    <h4>Global Portfolio</h4>
+                    <p>Diversified investments across international markets</p>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            
+            <div class="investment-image">
+              <img src="https://images.unsplash.com/photo-1560518883-ce09059eeffa?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Investment Properties">
+            </div>
+          </div>
+        </section>
+
+        <section class="team-section">
+          <div class="section-header">
+            <h2 class="section-title">Meet Our Team</h2>
+            <p class="section-description">
+              Our experienced professionals are dedicated to helping you achieve your real estate goals.
+            </p>
+          </div>
+          
+          <div class="team-grid">
+            <div class="team-card">
+              <div class="team-image">
+                <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="James Wilson">
+              </div>
+              <div class="team-info">
+                <h3 class="team-name">James Wilson</h3>
+                <span class="team-role">Senior Property Consultant</span>
+                <p>15+ years experience in luxury real estate</p>
+                
+              </div>
+            </div>
+            
+            <div class="team-card">
+              <div class="team-image">
+                <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Sarah Miller">
+              </div>
+              <div class="team-info">
+                <h3 class="team-name">Sarah Miller</h3>
+                <span class="team-role">Investment Advisor</span>
+                <p>Specialist in commercial real estate investments</p>
+              </div>
+            </div>
+            
+            <div class="team-card">
+              <div class="team-image">
+                <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Michael Chen">
+              </div>
+              <div class="team-info">
+                <h3 class="team-name">Michael Chen</h3>
+                <span class="team-role">International Properties Director</span>
+                <p>Expert in cross-border real estate transactions</p>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section class="stats-banner">
+          <div class="stats-container">
+            <div class="stat-item-home2">
+              <span class="stat-number-home2" data-count="1500">0</span>
+              <span class="stat-label-home2">Properties Sold</span>
+            </div>
+            <div class="stat-item-home2">
+              <span class="stat-number-home2" data-count="350">0</span>
+              <span class="stat-label-home2">Happy Clients</span>
+            </div>
+            <div class="stat-item-home2">
+              <span class="stat-number-home2" data-count="28">0</span>
+              <span class="stat-label-home2">Years Experience</span>
+            </div>
+            <div class="stat-item-home2">
+              <span class="stat-number-home2" data-count="65">0</span>
+              <span class="stat-label-home2">Global Partners</span>
+            </div>
+          </div>
+        </section>
+
+        <!-- Property Types Section -->
+        <section class="property-types">
+          <div class="section-header">
+            <h2 class="section-title">Property Types</h2>
+            <p class="section-description">
+              We specialize in various property types to meet diverse client needs.
+            </p>
+          </div>
+          
+          <div class="types-grid">
+            <div class="type-card">
+              <div class="type-icon">
+                <i class="fas fa-home"></i>
+              </div>
+              <h3>Luxury Villas</h3>
+              <p>Exclusive waterfront and hillside properties with premium amenities</p>
+            </div>
+            
+            <div class="type-card">
+              <div class="type-icon">
+                <i class="fas fa-building"></i>
+              </div>
+              <h3>Modern Apartments</h3>
+              <p>City-center apartments with smart home features and concierge</p>
+            </div>
+            
+            <div class="type-card">
+              <div class="type-icon">
+                <i class="fas fa-warehouse"></i>
+              </div>
+              <h3>Commercial Spaces</h3>
+              <p>Premium office spaces, retail locations, and industrial properties</p>
+            </div>
+            
+            <div class="type-card">
+              <div class="type-icon">
+                <i class="fas fa-tree"></i>
+              </div>
+              <h3>Country Estates</h3>
+              <p>Spacious rural properties with land and privacy  services</p>
+            </div>
+          </div>
+        </section>
+      </main>
+
+      <footer class="site-footer" id="contact">
+        <div class="footer-content">
+          <div class="footer-column">
+            <div class="footer-brand">
+              <div class="footer-brand-text">
+                <h3>Housing Society</h3>
+                <p>Your trusted partner in real estate.<br> 
+                  Finding homes that become memories.</p>
+              </div>
+              
+              <div class="footer-social-icons">
+                <a href="https://www.facebook.com/" class="footer-social-icon" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                <a href="https://www.twitter.com/" class="footer-social-icon" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                <a href="https://www.instagram.com/" class="footer-social-icon" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                <a href="https://www.linkedin.com/" class="footer-social-icon" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+              </div>
+            </div>
+          </div>
+          
+          <div class="footer-column">
+            <h4>Quick Links</h4>
+            <ul class="footer-links">
+              <li><a href="index.html"><i class="fas fa-chevron-right"></i> Home</a></li>
+              <li><a href="aboutus.html"><i class="fas fa-chevron-right"></i> About Us</a></li>
+              <li><a href="services.html"><i class="fas fa-chevron-right"></i> Services</a></li>
+              <li><a href="contactus.html"><i class="fas fa-chevron-right"></i> Contact Us</a></li>
+            </ul>
+          </div>
+          
+          <div class="footer-column">
+            <h4>Our Services</h4>
+            <ul class="footer-links">
+              <li><a href="servicedetails.html"><i class="fas fa-home"></i> Residential Sales</a></li>
+              <li><a href="servicedetails.html"><i class="fas fa-building"></i> Commercial Leasing</a></li>
+              <li><a href="servicedetails.html"><i class="fas fa-chart-line"></i> Investment Properties</a></li>
+              <li><a href="servicedetails.html"><i class="fas fa-search-dollar"></i> Property Valuation</a></li>
+            </ul>
+          </div>
+
+          <div class="footer-column house-image-column">
+            <div class="house-image-wrapper">
+              <img src="https://images.unsplash.com/photo-1568605114967-8130f3a36994?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" 
+                   alt="Modern Dream Home" 
+                   class="house-image">
+            </div>
+            <p class="house-caption">Find Your Dream Home Today</p>
+          </div>
+        </div>
+        <div class="footer-bottom">
+          <p>© Copyright Compass Housing Society 2024. All rights reserved.</p>
+        </div>
+      </footer>
+    </div>
+  </div>
+
+  <button class="back-to-top" aria-label="Back to top">
+    <i class="fas fa-arrow-up"></i>
+  </button>
+
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      // Theme Toggle
+      const body = document.body;
+      const themeToggles = document.querySelectorAll(".theme-toggle");
+      const storedTheme = localStorage.getItem("compass-theme");
+
+      const themeToggle = () => {
+        const isDark = body.classList.toggle("dark-mode");
+        localStorage.setItem("compass-theme", isDark ? "dark" : "light");
+      };
+
+      if (storedTheme === "dark") {
+        body.classList.add("dark-mode");
+      }
+
+      themeToggles.forEach(toggle => {
+        toggle.addEventListener("click", themeToggle);
+        toggle.addEventListener("keypress", (e) => {
+          if (e.key === "Enter" || e.key === " ") {
+            themeToggle();
+          }
+        });
+      });
+
+      // Mobile Navigation
+      const menuToggle = document.querySelector(".menu-toggle");
+      const navMenu = document.querySelector(".nav-menu");
+
+      function closeMenu() {
+        if (navMenu) navMenu.classList.remove("nav-open");
+      }
+
+      if (menuToggle && navMenu) {
+        menuToggle.addEventListener("click", function () {
+          navMenu.classList.toggle("nav-open");
+          const isOpen = navMenu.classList.contains("nav-open");
+          menuToggle.setAttribute("aria-expanded", isOpen);
+          menuToggle.innerHTML = isOpen ? "✕" : "☰";
+        });
+
+        document.addEventListener('click', function(event) {
+          const isClickInsideMenu = navMenu.contains(event.target);
+          const isClickOnToggle = menuToggle.contains(event.target);
+          const mobileActions = document.querySelector('.mobile-actions');
+          const isClickOnMobileActions = mobileActions ? mobileActions.contains(event.target) : false;
+          
+          if (window.innerWidth <= 1030 && !isClickInsideMenu && !isClickOnToggle && !isClickOnMobileActions && navMenu.classList.contains('nav-open')) {
+            closeMenu();
+            menuToggle.setAttribute("aria-expanded", "false");
+            menuToggle.innerHTML = "☰";
+          }
+        });
+
+        document.addEventListener('keydown', function(event) {
+          if (event.key === 'Escape' && window.innerWidth <= 1030 && navMenu.classList.contains('nav-open')) {
+            closeMenu();
+            menuToggle.setAttribute("aria-expanded", "false");
+            menuToggle.innerHTML = "☰";
+          }
+        });
+      }
+
+      // Dropdown Menus
+      const dropdownItems = document.querySelectorAll(".nav-item.dropdown > .nav-link-custom");
+
+      dropdownItems.forEach(link => {
+        link.addEventListener("click", function (e) {
+          e.preventDefault();
+          const parent = this.parentElement;
+
+          document.querySelectorAll(".nav-item.dropdown.open").forEach(item => {
+            if (item !== parent) {
+              item.classList.remove("open");
+            }
+          });
+
+          parent.classList.toggle("open");
+        });
+      });
+
+      // Close menu on mobile link click
+      const normalLinks = document.querySelectorAll(".nav-item:not(.dropdown) .nav-link-custom, .nav-item:not(.dropdown) a");
+
+      normalLinks.forEach(l => {
+        l.addEventListener("click", function () {
+          if (window.innerWidth <= 1030) {
+            closeMenu();
+            menuToggle.setAttribute("aria-expanded", "false");
+            menuToggle.innerHTML = "☰";
+          }
+        });
+      });
+
+      // Back to Top Button
+      const backToTopButton = document.querySelector('.back-to-top');
+
+      window.addEventListener('scroll', function() {
+        if (window.pageYOffset > 300) {
+          backToTopButton.classList.add('show');
+        } else {
+          backToTopButton.classList.remove('show');
+        }
+      });
+
+      backToTopButton.addEventListener('click', function() {
+        window.scrollTo({
+          top: 0,
+          behavior: 'smooth'
+        });
+      });
+
+      // Search Tabs Functionality
+      const searchTabs = document.querySelectorAll('.search-tab');
+      searchTabs.forEach(tab => {
+        tab.addEventListener('click', function() {
+          searchTabs.forEach(t => t.classList.remove('active'));
+          this.classList.add('active');
+        });
+      });
+
+      // Statistics Counter Animation
+      const statNumbers = document.querySelectorAll('.stat-number-home2');
+      
+      const observerOptions = {
+        threshold: 0.5,
+        rootMargin: '0px 0px -100px 0px'
+      };
+
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            const element = entry.target;
+            const target = parseInt(element.getAttribute('data-count'));
+            const increment = target / 50;
+            let current = 0;
+            
+            const timer = setInterval(() => {
+              current += increment;
+              if (current >= target) {
+                element.textContent = target;
+                clearInterval(timer);
+              } else {
+                element.textContent = Math.floor(current);
+              }
+            }, 30);
+            
+            observer.unobserve(element);
+          }
+        });
+      }, observerOptions);
+
+      statNumbers.forEach(stat => observer.observe(stat));
+
+      // Resize handler
+      window.addEventListener("resize", () => {
+        if (window.innerWidth > 1030) {
+          closeMenu();
+          if (menuToggle) {
+            menuToggle.setAttribute("aria-expanded", "false");
+            menuToggle.innerHTML = "☰";
+          }
+          document.querySelectorAll(".nav-item.dropdown.open").forEach(item => {
+            item.classList.remove("open");
+          });
+        }
+      });
+    });
+  </script>
+</body>
+</html>

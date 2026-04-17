@@ -1,0 +1,1620 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Property Sales Service Details | Compass Housing Society</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    :root {
+      --primary: #6A5337;
+      --accent: #C69050;
+      --light: #FFFFFF;
+      --dark: #000000;
+      --dark-bg: #121212;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      color: var(--dark);
+      background-color: var(--light);
+      transition: background-color 0.3s, color 0.3s;
+      line-height: 1.6;
+    }
+
+    h1 { font-size: 46px; line-height: 1.2; font-weight: 800; }
+    h2 { font-size: 36px; line-height: 1.3; font-weight: 700; }
+    h3 { font-size: 28px; line-height: 1.4; font-weight: 600; }
+    h4 { font-size: 22px; line-height: 1.4; font-weight: 600; }
+    h5, h6 { font-size: 20px; line-height: 1.4; font-weight: 600; }
+    li, span, p { font-size: 18px; line-height: 1.6; font-weight: 400; }
+    a { text-decoration: none; color: inherit; }
+    ul { list-style: none; padding-left: 0; margin-bottom: 0; }
+
+    body::after {
+      content: "";
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background-image: url("Images/transparent-logo.jpeg");
+      background-repeat: no-repeat;
+      background-position: center;
+      background-size: 570px auto;
+      opacity: 0.10;
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    .page-wrapper {
+      max-width: 1920px;
+      margin: 0 auto;
+      min-height: 100vh;
+      position: relative;
+      overflow-x: hidden;
+      padding-top: 82px;
+      background-color: var(--light);
+      transition: background-color 0.3s;
+    }
+
+    .content-layer { 
+      position: relative; 
+      z-index: 1;
+      min-height: calc(100vh - 200px);
+    }
+
+    header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      z-index: 100;
+      background: var(--primary);
+      box-shadow: 0 8px 22px rgba(0, 0, 0, 0.55);
+      transition: background-color 0.3s;
+    }
+
+    .navbar-custom { 
+      display: flex; 
+      align-items: center; 
+      justify-content: space-between; 
+      gap: 24px; 
+      position: relative;
+      padding: 12px 40px;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-weight: 800;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      white-space: nowrap;
+      color: var(--light);
+    }
+
+    .brand img { 
+      width: 58px; 
+      height: 58px; 
+      object-fit: cover; 
+      border-radius: 8px;
+      border: 2px solid var(--light); 
+      opacity: 0.97; 
+      background: transparent; 
+    }
+
+    .nav-menu { 
+      display: flex; 
+      align-items: center; 
+      gap: 24px; 
+      flex: 1; 
+      justify-content: center; 
+      flex-wrap: wrap; 
+    }
+
+    .nav-item { position: relative; }
+    .nav-link-custom {
+      color: var(--light);
+      padding: 4px 0;
+      opacity: 0.9;
+      position: relative;
+      cursor: pointer;
+      display: inline-block;
+      transition: color 0.25s ease, opacity 0.25s ease;
+      font-weight: 500;
+    }
+
+    .nav-link-custom::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      bottom: -3px;
+      width: 0%;
+      height: 2px;
+      background-color: var(--accent);
+      transition: width 0.25s ease;
+    }
+
+    .nav-link-custom:hover::after { width: 100%; }
+    .dropdown-toggle-custom::after { content: " ▾"; position: static; width: auto; height: auto; background: none; margin-left: 4px; }
+
+    .dropdown-menu-custom {
+      position: absolute;
+      left: 0;
+      top: calc(100% + 6px);
+      background-color: var(--primary);
+      border-radius: 10px;
+      border: 1px solid rgba(248, 250, 252, 0.12);
+      min-width: 190px;
+      display: none;
+      padding: 6px 0;
+      z-index: 120;
+      box-shadow: 0 12px 20px rgba(0, 0, 0, 0.6);
+    }
+
+    .dropdown-menu-custom li a {
+      display: block;
+      padding: 8px 18px;
+      color: var(--light);
+      white-space: nowrap;
+      opacity: 0.9;
+      transition: background-color 0.25s ease, opacity 0.25s ease, color 0.25s ease;
+      font-weight: 500;
+    }
+
+    .dropdown-menu-custom li a:hover { background-color: rgba(243, 243, 250, 0.15); opacity: 1; color: var(--accent); }
+    .nav-item.dropdown.open>.dropdown-menu-custom { display: block; }
+
+    .nav-actions { 
+      display: flex; 
+      align-items: center; 
+      gap: 12px; 
+      margin-left: auto; 
+    }
+
+    .btn-animated { 
+      transition: transform 0.25s ease, box-shadow 0.25s ease, filter 0.25s ease; 
+      box-shadow: 0 6px 16px rgba(0, 0, 0, 0.45); 
+    }
+
+    .btn-animated:hover { 
+      transform: translateY(-2px); 
+      box-shadow: 0 10px 26px rgba(0, 0, 0, 0.7); 
+      filter: brightness(0.96); 
+    }
+
+    .btn-register {
+      background: var(--accent);
+      color: var(--dark);
+      border: none;
+      padding: 8px 15px;
+      border-radius: 999px;
+      font-weight: 600;
+      cursor: pointer;
+      white-space: nowrap;
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-size: 16px;
+    }
+
+    .theme-toggle {
+      position: relative;
+      width: 70px;
+      height: 34px;
+      border-radius: 34px;
+      background: linear-gradient(145deg, #4a4a4a, #2a2a2a);
+      border: 2px solid rgba(255, 255, 255, 0.3);
+      cursor: pointer;
+      transition: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+      box-shadow: 
+        inset 0 2px 4px rgba(0, 0, 0, 0.3),
+        0 4px 12px rgba(0, 0, 0, 0.25);
+      overflow: hidden;
+    }
+
+    .theme-toggle::before {
+      content: '';
+      position: absolute;
+      top: 3px;
+      left: 3px;
+      width: 26px;
+      height: 26px;
+      background: linear-gradient(145deg, #FFD700, #FFA500);
+      border-radius: 50%;
+      transition: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+      z-index: 2;
+      box-shadow: 
+        0 2px 4px rgba(0, 0, 0, 0.3),
+        inset 0 -1px 2px rgba(255, 255, 255, 0.2);
+    }
+
+    .theme-toggle::after {
+      content: '☀️';
+      position: absolute;
+      top: 50%;
+      right: 10px;
+      transform: translateY(-50%);
+      font-size: 14px;
+      opacity: 0.9;
+      filter: drop-shadow(0 1px 2px rgba(0, 0, 0, 0.3));
+      transition: all 0.4s ease;
+    }
+
+    .theme-toggle .moon {
+      position: absolute;
+      top: 50%;
+      left: 10px;
+      transform: translateY(-50%);
+      font-size: 14px;
+      opacity: 0.3;
+      filter: drop-shadow(0 1px 2px rgba(0, 0, 0, 0.3));
+      transition: all 0.4s ease;
+    }
+
+    body.dark-mode .theme-toggle {
+      background: linear-gradient(145deg, #2a2a2a, #1a1a1a);
+      border-color: rgba(255, 255, 255, 0.15);
+    }
+
+    body.dark-mode .theme-toggle::before {
+      left: calc(100% - 29px);
+      background: linear-gradient(145deg, #e0e0e0, #a0a0a0);
+      box-shadow: 
+        0 0 8px rgba(255, 255, 255, 0.2),
+        inset 0 -1px 2px rgba(0, 0, 0, 0.2);
+    }
+
+    body.dark-mode .theme-toggle::after {
+      opacity: 0.3;
+    }
+
+    body.dark-mode .theme-toggle .moon {
+      opacity: 0.9;
+    }
+
+    .theme-toggle:hover::before {
+      transform: scale(1.1);
+    }
+
+    body.dark-mode .theme-toggle:hover::before {
+      box-shadow: 
+        0 0 12px rgba(255, 255, 255, 0.3),
+        inset 0 -1px 2px rgba(0, 0, 0, 0.2);
+    }
+
+    .menu-toggle {
+      display: none;
+      border: 1px solid var(--light);
+      background: transparent;
+      font-size: 22px;
+      line-height: 1;
+      cursor: pointer;
+      color: var(--light);
+      padding: 4px 10px;
+      border-radius: 4px;
+    }
+
+    .mobile-actions {
+      display: none;
+      align-items: center;
+      gap: 12px;
+      margin-left: auto;
+    }
+
+    /* Service Details Specific Styles */
+    .service-details-hero {
+      padding: 80px 20px;
+      background: linear-gradient(135deg, rgba(106, 83, 55, 0.95) 0%, rgba(90, 71, 48, 0.95) 100%),
+                  url('https://images.unsplash.com/photo-1560518883-ce09059eeffa?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80') center/cover no-repeat;
+      color: white;
+      text-align: center;
+      margin-bottom: 60px;
+    }
+
+    .service-hero-content {
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+    .service-category {
+      font-size: 16px;
+      font-weight: 600;
+      letter-spacing: 4px;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 20px;
+      display: inline-block;
+      padding: 10px 25px;
+      background: rgba(255, 255, 255, 0.1);
+      backdrop-filter: blur(10px);
+      border-radius: 30px;
+      border: 1px solid rgba(255, 255, 255, 0.2);
+    }
+
+    .service-hero-title {
+      font-size: 56px;
+      font-weight: 800;
+      line-height: 1.2;
+      margin-bottom: 25px;
+      color: white;
+      text-shadow: 3px 3px 12px rgba(0,0,0,0.5);
+    }
+
+    .service-hero-description {
+      font-size: 20px;
+      line-height: 1.7;
+      margin-bottom: 40px;
+      opacity: 0.95;
+      color: rgba(255, 255, 255, 0.9);
+    }
+
+    .service-details-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 20px;
+      display: grid;
+      grid-template-columns: 2fr 1fr;
+      gap: 50px;
+      margin-bottom: 80px;
+    }
+
+    .service-main-content h2 {
+      color: var(--primary);
+      margin-bottom: 25px;
+      font-size: 36px;
+    }
+
+    .service-main-content h3 {
+      color: var(--primary);
+      margin: 35px 0 20px;
+      font-size: 28px;
+      padding-bottom: 10px;
+      border-bottom: 2px solid rgba(198, 144, 80, 0.3);
+    }
+
+    .service-main-content p {
+      margin-bottom: 25px;
+      color: #333;
+      line-height: 1.7;
+    }
+
+    .service-features-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 25px;
+      margin: 40px 0;
+    }
+
+    .service-feature-item {
+      background: rgba(198, 144, 80, 0.1);
+      border-radius: 12px;
+      padding: 25px;
+      transition: all 0.3s ease;
+      border: 1px solid rgba(198, 144, 80, 0.2);
+    }
+
+    .service-feature-item:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+    }
+
+    .feature-icon {
+      width: 60px;
+      height: 60px;
+      background: var(--accent);
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 20px;
+      color: white;
+      font-size: 26px;
+    }
+
+    .feature-content h4 {
+      font-size: 20px;
+      color: var(--primary);
+      margin-bottom: 12px;
+    }
+
+    .service-sidebar {
+      background: #f9f9f9;
+      border-radius: 20px;
+      padding: 30px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+      height: fit-content;
+      position: sticky;
+      top: 120px;
+    }
+
+    .service-info-card {
+      margin-bottom: 40px;
+    }
+
+    .service-info-card h4 {
+      font-size: 22px;
+      color: var(--primary);
+      margin-bottom: 25px;
+      padding-bottom: 15px;
+      border-bottom: 2px solid var(--accent);
+    }
+
+    .service-info-list {
+      list-style: none;
+    }
+
+    .service-info-list li {
+      margin-bottom: 20px;
+      display: flex;
+      align-items: flex-start;
+      gap: 15px;
+    }
+
+    .service-info-list i {
+      color: var(--accent);
+      font-size: 20px;
+      margin-top: 3px;
+      flex-shrink: 0;
+    }
+
+    .cta-card {
+      background: linear-gradient(135deg, var(--primary) 0%, #5a4730 100%);
+      border-radius: 15px;
+      padding: 30px;
+      color: white;
+      text-align: center;
+    }
+
+    .cta-card h4 {
+      color: white;
+      font-size: 24px;
+      margin-bottom: 20px;
+    }
+
+    .cta-card p {
+      color: rgba(255, 255, 255, 0.9);
+      margin-bottom: 25px;
+    }
+
+    .cta-btn {
+      background: var(--accent);
+      color: var(--dark);
+      border: none;
+      padding: 15px 30px;
+      border-radius: 50px;
+      font-weight: 600;
+      cursor: pointer;
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-size: 16px;
+      display: inline-block;
+      transition: all 0.3s ease;
+      text-decoration: none;
+    }
+
+    .cta-btn:hover {
+      background: #d9a566;
+      transform: translateY(-3px);
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+    }
+
+    .process-section {
+      padding: 80px 20px;
+      background: linear-gradient(135deg, rgba(106, 83, 55, 0.05) 0%, rgba(90, 71, 48, 0.05) 100%);
+      margin-bottom: 80px;
+    }
+
+    .process-container {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .section-header {
+      text-align: center;
+      max-width: 800px;
+      margin: 0 auto 60px;
+    }
+
+    .section-subtitle {
+      font-size: 16px;
+      font-weight: 600;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 15px;
+      display: block;
+    }
+
+    .section-title {
+      font-size: 42px;
+      font-weight: 800;
+      color: var(--primary);
+      margin-bottom: 20px;
+      line-height: 1.2;
+    }
+
+    .process-steps {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 30px;
+      counter-reset: step-counter;
+    }
+
+    .process-step {
+      background: white;
+      border-radius: 20px;
+      padding: 40px 30px;
+      text-align: center;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+      position: relative;
+      transition: all 0.3s ease;
+    }
+
+    .process-step:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.12);
+    }
+
+    .process-step::before {
+      counter-increment: step-counter;
+      content: counter(step-counter);
+      position: absolute;
+      top: -25px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 50px;
+      height: 50px;
+      background: var(--accent);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--dark);
+      font-weight: 800;
+      font-size: 22px;
+      box-shadow: 0 5px 15px rgba(198, 144, 80, 0.4);
+    }
+
+    .process-icon {
+      width: 80px;
+      height: 80px;
+      background: linear-gradient(135deg, var(--accent), #e8b265);
+      border-radius: 20px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 30px;
+      color: white;
+      font-size: 36px;
+    }
+
+    .process-step h4 {
+      font-size: 22px;
+      color: var(--primary);
+      margin-bottom: 15px;
+    }
+
+    .process-step p {
+      color: #666;
+      line-height: 1.7;
+    }
+
+    .faq-section {
+      padding: 0 20px 80px;
+      max-width: 1000px;
+      margin: 0 auto;
+    }
+
+    .faq-item {
+      background: white;
+      border-radius: 15px;
+      margin-bottom: 20px;
+      overflow: hidden;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+      transition: all 0.3s ease;
+    }
+
+    .faq-item.active {
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+    }
+
+    .faq-question {
+      padding: 25px 30px;
+      font-size: 20px;
+      font-weight: 600;
+      color: var(--primary);
+      cursor: pointer;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      transition: all 0.3s ease;
+    }
+
+    .faq-question:hover {
+      background-color: rgba(198, 144, 80, 0.05);
+    }
+
+    .faq-icon {
+      color: var(--accent);
+      font-size: 24px;
+      transition: transform 0.3s ease;
+    }
+
+    .faq-item.active .faq-icon {
+      transform: rotate(45deg);
+    }
+
+    .faq-answer {
+      padding: 0 30px;
+      max-height: 0;
+      overflow: hidden;
+      transition: all 0.3s ease;
+      color: #666;
+      line-height: 1.7;
+    }
+
+    .faq-item.active .faq-answer {
+      padding: 0 30px 30px;
+      max-height: 500px;
+    }
+
+    .site-footer {
+      background: var(--primary);
+      color: var(--light);
+      font-size: 14px;
+      width: 100%;
+      transition: background-color 0.3s;
+      padding: 30px 0 20px;
+      min-height: 180px;
+      position: relative;
+      margin-top: 0;
+    }
+
+    .footer-content {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 20px;
+      gap: 30px;
+    }
+
+    .footer-column {
+      margin-bottom: 15px;
+    }
+
+    .footer-brand-column {
+      grid-column: span 2;
+    }
+
+    .footer-brand {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 15px;
+    }
+
+    .footer-logo {
+      width: 60px;
+      height: 60px;
+      object-fit: cover;
+      border-radius: 12px;
+      border: 2px solid var(--light);
+    }
+
+    .footer-brand-text h3 {
+      font-size: 24px;
+      font-weight: 700;
+      margin-bottom: 12px;
+      color: var(--light);
+    }
+
+    .footer-brand-text p {
+      font-size: 15px;
+      opacity: 0.9;
+      max-width: 350px;
+      margin-bottom: 20px;
+      line-height: 1.6;
+    }
+
+    .footer-social-icons {
+      display: flex;
+      gap: 12px;
+      margin-top: 10px;
+    }
+
+    .footer-social-icon {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.1);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--light);
+      font-size: 18px;
+      transition: all 0.3s ease;
+      border: 1px solid rgba(255, 255, 255, 0.2);
+    }
+
+    .footer-social-icon:hover {
+      background: var(--accent);
+      color: var(--dark);
+      transform: translateY(-3px);
+    }
+
+    .footer-column h4 {
+      font-size: 20px;
+      font-weight: 700;
+      margin-bottom: 20px;
+      color: var(--light);
+      position: relative;
+      padding-bottom: 8px;
+    }
+
+    .footer-links {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    .footer-links li {
+      margin-bottom: 12px;
+    }
+
+    .footer-links li a {
+      color: rgba(255, 255, 255, 0.85);
+      text-decoration: none;
+      transition: all 0.3s ease;
+      display: inline-block;
+      font-size: 15px;
+      font-weight: 500;
+    }
+
+    .footer-links li a:hover {
+      color: var(--accent);
+      transform: translateX(5px);
+    }
+
+    .footer-links li i {
+      margin-right: 8px;
+      color: var(--accent);
+      width: 16px;
+      text-align: center;
+    }
+
+    .footer-contact-info {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    .footer-contact-info li {
+      margin-bottom: 15px;
+      display: flex;
+      align-items: flex-start;
+      color: rgba(255, 255, 255, 0.85);
+      font-size: 15px;
+      line-height: 1.5;
+    }
+
+    .footer-contact-info li i {
+      margin-right: 12px;
+      color: var(--accent);
+      font-size: 16px;
+      margin-top: 3px;
+      flex-shrink: 0;
+    }
+
+    .house-image-column {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .house-image-wrapper {
+      width: 100%;
+      height: 180px;
+      border-radius: 12px;
+      overflow: hidden;
+      position: relative;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+      border: 3px solid var(--accent);
+    }
+
+    .house-image {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.5s ease;
+    }
+
+    .house-image:hover {
+      transform: scale(1.05);
+    }
+
+    .house-caption {
+      margin-top: 15px;
+      text-align: center;
+      color: var(--light);
+      font-size: 16px;
+      font-weight: 500;
+      opacity: 0.9;
+    }
+
+    .footer-bottom {
+      margin-top: 20px;
+      text-align: center;
+      font-size: 14px;
+      opacity: 0.8;
+      padding-top: 15px;
+      border-top: 1px solid rgba(255, 255, 255, 0.2);
+      width: 100%;
+      grid-column: 1 / -1;
+    }
+
+    .back-to-top {
+      position: fixed;
+      bottom: 30px;
+      right: 30px;
+      width: 50px;
+      height: 50px;
+      background-color: var(--primary);
+      color: white;
+      border: none;
+      border-radius: 50%;
+      font-size: 24px;
+      cursor: pointer;
+      z-index: 99;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      opacity: 0;
+      visibility: hidden;
+      transition: all 0.3s ease;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    }
+
+    .back-to-top.show {
+      opacity: 1;
+      visibility: visible;
+    }
+
+    .back-to-top:hover {
+      background-color: var(--accent);
+      transform: translateY(-3px);
+      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+    }
+
+    /* Dark Mode Styles */
+    body.dark-mode {
+      background-color: var(--dark-bg);
+      color: #ffffff;
+    }
+
+    body.dark-mode .page-wrapper {
+      background-color: var(--dark-bg);
+    }
+
+    body.dark-mode header,
+    body.dark-mode .site-footer {
+      background-color: #1a1a1a;
+    }
+
+    body.dark-mode .nav-menu {
+      background: #1a1a1a;
+    }
+
+    body.dark-mode .dropdown-menu-custom {
+      background-color: #2a2a2a;
+      border-color: rgba(255, 255, 255, 0.1);
+    }
+
+    body.dark-mode .brand img {
+      border-color: #ffffff;
+    }
+
+    body.dark-mode .brand {
+      color: #ffffff;
+    }
+
+    body.dark-mode .nav-link-custom {
+      color: #ffffff;
+    }
+
+    body.dark-mode .dropdown-menu-custom li a {
+      color: #ffffff;
+    }
+
+    body.dark-mode .footer-social-icon {
+      background: rgba(255, 255, 255, 0.1);
+      color: #ffffff;
+      border-color: rgba(255, 255, 255, 0.2);
+    }
+
+    body.dark-mode .footer-social-icon:hover {
+      background: var(--accent);
+      color: var(--dark);
+    }
+
+    body.dark-mode .service-main-content h2,
+    body.dark-mode .service-main-content h3,
+    body.dark-mode .section-title {
+      color: #ffffff;
+    }
+
+    body.dark-mode .service-main-content p,
+    body.dark-mode .service-hero-description {
+      color: #cccccc;
+    }
+
+    body.dark-mode .service-sidebar {
+      background: #2a2a2a;
+      color: #ffffff;
+    }
+
+    body.dark-mode .feature-content h4 {
+      color: #ffffff;
+    }
+
+    body.dark-mode .process-step {
+      background: #2a2a2a;
+      color: #ffffff;
+    }
+
+    body.dark-mode .process-step p {
+      color: #cccccc;
+    }
+
+    body.dark-mode .faq-item {
+      background: #2a2a2a;
+      color: #ffffff;
+    }
+
+    body.dark-mode .faq-question {
+      color: #ffffff;
+    }
+
+    body.dark-mode .faq-answer {
+      color: #cccccc;
+    }
+
+    /* Responsive Styles */
+    @media (max-width: 1030px) {
+      .navbar-custom { 
+        padding: 10px 16px;
+        gap: 10px; 
+        justify-content: space-between;
+        flex-wrap: wrap;
+      }
+      .brand {
+        order: 1;
+        flex: 1;
+      }
+      .nav-actions.desktop-actions {
+        display: none;
+      }
+      .mobile-actions {
+        display: flex;
+        order: 2;
+      }
+      .menu-toggle {
+        display: inline-flex;
+        order: 3;
+      }
+      .nav-menu {
+        position: fixed;
+        top: 0;
+        right: -280px;
+        width: 280px;
+        height: auto;
+        max-height: 90vh;
+        flex-direction: column;
+        align-items: flex-start;
+        justify-content: flex-start;
+        background: var(--primary);
+        padding: 20px;
+        border-radius: 0 0 0 16px;
+        box-shadow: -12px 0 30px rgba(0, 0, 0, 0.85);
+        z-index: 110;
+        gap: 12px;
+        transition: right 0.3s ease;
+        border: 1px solid rgba(248, 250, 252, 0.6);
+        overflow-y: auto;
+        margin-top: 0;
+      }
+      body.dark-mode .nav-menu {
+        background: #1a1a1a;
+      }
+      .nav-menu.nav-open { right: 0; }
+      .nav-item { width: 100%; }
+      .nav-link-custom { width: 100%; padding: 10px 0; }
+      .dropdown-menu-custom { 
+        position: static; 
+        margin-top: 4px; 
+        background: rgba(255, 255, 255, 0.05); 
+        border-radius: 8px; 
+        border: none; 
+        box-shadow: none; 
+        padding: 0 0 4px 10px; 
+        display: none;
+      }
+      body.dark-mode .dropdown-menu-custom {
+        background: rgba(255, 255, 255, 0.05);
+      }
+      .dropdown-menu-custom li a { padding: 8px 0; font-size: 15px; opacity: 0.85; }
+      .nav-item.dropdown.open>.dropdown-menu-custom { display: block; }
+      
+      .service-details-container {
+        grid-template-columns: 1fr;
+        gap: 40px;
+      }
+      
+      .service-sidebar {
+        position: static;
+      }
+      
+      .service-features-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+    
+    @media (max-width: 768px) {
+      .service-hero-title {
+        font-size: 42px;
+      }
+      
+      .service-hero-description {
+        font-size: 18px;
+      }
+      
+      .section-title {
+        font-size: 36px;
+      }
+      
+      .process-steps {
+        grid-template-columns: 1fr;
+      }
+      
+      .footer-content {
+        grid-template-columns: 1fr;
+        text-align: center;
+      }
+      
+      .footer-brand-column {
+        grid-column: span 1;
+      }
+      
+      .footer-brand,
+      .footer-column {
+        align-items: center;
+        text-align: center;
+      }
+    }
+    
+    @media (max-width: 576px) {
+      .page-wrapper { padding-top: 60px; }
+      .brand span { font-size: 14px; }
+      .brand img { width: 40px; height: 40px; }
+      .nav-menu {
+        width: 250px;
+        max-height: 85vh;
+        top: 60px;
+        right: -250px;
+      }
+      
+      .service-hero-title {
+        font-size: 36px;
+      }
+      
+      .section-title {
+        font-size: 28px;
+      }
+      
+      .back-to-top {
+        width: 45px;
+        height: 45px;
+        font-size: 20px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="page-wrapper">
+    <div class="content-layer">
+      <header>
+        <nav class="navbar-custom">
+          <div class="brand">
+            <img src="Images/logo.jpeg" alt="Compass Housing Society Logo">
+            <span>Compass Housing<br> Society</span>
+          </div>
+
+          <div class="mobile-actions">
+            <div class="theme-toggle" aria-label="Toggle dark / light mode">
+              <span class="moon">🌙</span>
+            </div>
+            <a href="login.html">
+              <button class="btn-register btn-animated" type="button">Get in touch</button>
+            </a>
+          </div>
+
+          <ul class="nav-menu">
+            <li class="nav-item">
+              <a href="index.html" class="nav-link-custom">Home 1</a>
+            </li>
+            <li class="nav-item">
+              <a href="home2.html" class="nav-link-custom">Home 2</a>
+            </li>
+            <li class="nav-item">
+              <a href="aboutus.html" class="nav-link-custom">About Us</a>
+            </li>
+            <li class="nav-item dropdown">
+              <span class="nav-link-custom dropdown-toggle-custom">Services</span>
+              <ul class="dropdown-menu-custom">
+                <li><a href="services.html">Service</a></li>
+                <li><a href="servicedetails.html">Service Details</a></li>
+              </ul>
+            </li>
+            <li class="nav-item dropdown">
+              <span class="nav-link-custom dropdown-toggle-custom">Blog</span>
+              <ul class="dropdown-menu-custom">
+                <li><a href="blog.html">Blog</a></li>
+                <li><a href="blogdetails.html">Blog Details</a></li>
+              </ul>
+            </li>
+            <li class="nav-item dropdown">
+              <span class="nav-link-custom dropdown-toggle-custom">Contact Us</span>
+              <ul class="dropdown-menu-custom">
+                <li><a href="contactus.html">Contact Us</a></li>
+                <li><a href="additionalpage.html">404</a></li>
+                <li><a href="pricing.html">Pricing</a></li>
+                <li><a href="commingsoon.html">Comming soon</a></li>
+              </ul>
+            </li>
+          </ul>
+
+          <div class="nav-actions desktop-actions">
+            <div class="theme-toggle" aria-label="Toggle dark / light mode">
+              <span class="moon">🌙</span>
+            </div>
+            <a href="login.html">
+              <button class="btn-register btn-animated" type="button">Get in touch</button>
+            </a>
+          </div>
+
+          <button class="menu-toggle" type="button" aria-label="Toggle menu">☰</button>
+        </nav>
+      </header>
+
+      <main>
+        <section class="service-details-hero">
+          <div class="service-hero-content">
+            <h1 class="service-hero-title">Property Sales</h1>
+            <p class="service-hero-description">
+              Maximize your property's value with our comprehensive sales strategy, expert marketing, 
+              and professional negotiation services. We handle every aspect of the sales process to 
+              ensure optimal results.
+            </p>
+          </div>
+        </section>
+
+        <div class="service-details-container">
+          <div class="service-main-content">
+            <h2>Comprehensive Property Sales Solutions</h2>
+            <p>
+              At Compass Housing Society, we understand that selling a property is one of the most significant 
+              financial decisions you'll make. Our property sales service is designed to maximize your return 
+              while minimizing stress and uncertainty. With our extensive market knowledge and proven sales 
+              strategies, we position your property to attract the right buyers at the best possible price.
+            </p>
+            
+            <h3>Our Approach to Property Sales</h3>
+            <p>
+              We employ a strategic, data-driven approach to property sales that begins with a comprehensive 
+              market analysis and valuation. Our team develops a customized marketing plan tailored to your 
+              property's unique features and target buyer demographic. We leverage both traditional and digital 
+              marketing channels to ensure maximum visibility and engagement.
+            </p>
+            
+            <div class="service-features-grid">
+              <div class="service-feature-item">
+                <div class="feature-icon">
+                  <i class="fas fa-chart-line"></i>
+                </div>
+                <div class="feature-content">
+                  <h4>Market Analysis & Pricing</h4>
+                  <p>Comprehensive market research to determine optimal pricing strategy based on current trends and comparable properties.</p>
+                </div>
+              </div>
+              
+              <div class="service-feature-item">
+                <div class="feature-icon">
+                  <i class="fas fa-camera"></i>
+                </div>
+                <div class="feature-content">
+                  <h4>Professional Staging & Photography</h4>
+                  <p>High-quality staging and professional photography to showcase your property in its best light.</p>
+                </div>
+              </div>
+              
+              <div class="service-feature-item">
+                <div class="feature-icon">
+                  <i class="fas fa-bullhorn"></i>
+                </div>
+                <div class="feature-content">
+                  <h4>Multi-Channel Marketing</h4>
+                  <p>Strategic marketing across multiple platforms including MLS, social media, premium real estate portals, and print media.</p>
+                </div>
+              </div>
+              
+              <div class="service-feature-item">
+                <div class="feature-icon">
+                  <i class="fas fa-handshake"></i>
+                </div>
+                <div class="feature-content">
+                  <h4>Expert Negotiation</h4>
+                  <p>Skilled negotiation to secure the best possible terms and price while protecting your interests throughout the process.</p>
+                </div>
+              </div>
+            </div>
+            
+            
+          </div>
+          
+          
+          <div class="service-sidebar">
+            <div class="service-info-card">
+              <h4>Service Details</h4>
+              <ul class="service-info-list">
+                <li>
+                  <i class="fas fa-clock"></i>
+                  <div>
+                    <strong>Service Duration:</strong><br>
+                    Typically 30-90 days
+                  </div>
+                </li>
+                <li>
+                  <i class="fas fa-money-bill-wave"></i>
+                  <div>
+                    <strong>Commission Structure:</strong><br>
+                    Competitive rates with performance incentives
+                  </div>
+                </li>
+                <li>
+                  <i class="fas fa-home"></i>
+                  <div>
+                    <strong>Property Types:</strong><br>
+                    Residential, Commercial, Luxury, Investment
+                  </div>
+                </li>
+                <li>
+                  <i class="fas fa-users"></i>
+                  <div>
+                    <strong>Team Support:</strong><br>
+                    Dedicated agent + marketing specialist
+                  </div>
+                </li>
+                <li>
+                  <i class="fas fa-check-circle"></i>
+                  <div>
+                    <strong>Success Rate:</strong><br>
+                    98% of properties sold within 90 days
+                  </div>
+                </li>
+              </ul>
+            </div>
+            
+            <div class="cta-card">
+              <h4>Ready to Sell Your Property?</h4>
+              <p>Schedule a free consultation with our sales experts to discuss your property and get a customized sales strategy.</p>
+              <a href="contactus.html" class="cta-btn">Book Consultation</a>
+            </div>
+          </div>
+        </div>
+
+        <section class="process-section">
+          <div class="process-container">
+            <div class="section-header">
+              <h2 class="section-title">The Compass Sales Process</h2>
+              <p>Our structured approach ensures every property receives maximum attention and achieves optimal results.</p>
+            </div>
+            
+            <div class="process-steps">
+              <div class="process-step">
+                <div class="process-icon">
+                  <i class="fas fa-search"></i>
+                </div>
+                <h4>Property Assessment</h4>
+                <p>Comprehensive evaluation of your property, market analysis, and competitive positioning strategy.</p>
+              </div>
+              
+              <div class="process-step">
+                <div class="process-icon">
+                  <i class="fas fa-paint-roller"></i>
+                </div>
+                <h4>Preparation & Staging</h4>
+                <p>Professional staging, photography, and preparation to showcase your property at its absolute best.</p>
+              </div>
+              
+              <div class="process-step">
+                <div class="process-icon">
+                  <i class="fas fa-bullhorn"></i>
+                </div>
+                <h4>Strategic Marketing Staging</h4>
+                <p>Multi-channel marketing campaign targeting qualified buyers through digital and traditional channels.</p>
+              </div>
+              
+              <div class="process-step">
+                <div class="process-icon">
+                  <i class="fas fa-handshake"></i>
+                </div>
+                <h4>Negotiation & Closing</h4>
+                <p>Expert negotiation to secure optimal terms and professional handling of all closing procedures digital.</p>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section class="faq-section">
+          <div class="section-header">
+            <h2 class="section-title">Frequently Asked Questions</h2>
+            <p>Answers to common questions about our property sales service.</p>
+          </div>
+          
+          <div class="faq-container">
+            <div class="faq-item">
+              <div class="faq-question">
+                <span>How do you determine the right price for my property?</span>
+                <span class="faq-icon">+</span>
+              </div>
+              <div class="faq-answer">
+                <p>We conduct a comprehensive market analysis that includes evaluating recent sales of comparable properties in your area, current market trends, seasonal factors, and the unique features of your property. Our proprietary valuation model combines quantitative data with qualitative assessment to determine the optimal pricing strategy that balances speed of sale with maximum return.</p>
+              </div>
+            </div>
+            
+            <div class="faq-item">
+              <div class="faq-question">
+                <span>What marketing strategies do you use to sell properties?</span>
+                <span class="faq-icon">+</span>
+              </div>
+              <div class="faq-answer">
+                <p>We employ a multi-channel marketing approach that includes professional photography and virtual tours, MLS listing, premium real estate portals (Zillow, Realtor.com, etc.), targeted social media advertising, email marketing to our extensive buyer database, open houses, print media in luxury publications, and partnerships with other agencies to reach their buyer networks.</p>
+              </div>
+            </div>
+            
+            <div class="faq-item">
+              <div class="faq-question">
+                <span>How long does it typically take to sell a property?</span>
+                <span class="faq-icon">+</span>
+              </div>
+              <div class="faq-answer">
+                <p>The average time to sell varies by market conditions and property type, but our properties typically sell within 30-90 days. With our comprehensive marketing approach and optimal pricing strategy, 75% of our listings receive offers within the first 30 days of being on the market. We provide regular updates and adjust strategy as needed to ensure a timely sale.</p>
+              </div>
+            </div>
+            
+            <div class="faq-item">
+              <div class="faq-question">
+                <span>What sets your negotiation approach apart?</span>
+                <span class="faq-icon">+</span>
+              </div>
+              <div class="faq-answer">
+                <p>Our negotiation strategy is based on thorough preparation, market knowledge, and psychological insight. We prepare detailed buyer profiles, understand market dynamics, and employ strategic communication techniques. We focus not only on price but also on terms, contingencies, and timing to secure the overall best outcome for our clients while maintaining positive relationships with all parties involved.</p>
+              </div>
+            </div>
+          </div>
+        </section>
+      </main>
+
+      <footer class="site-footer" id="contact">
+        <div class="footer-content">
+          <div class="footer-column">
+            <div class="footer-brand">
+              <div class="footer-brand-text">
+                <h3>Housing Society</h3>
+                <p>Your trusted partner in real estate.<br> 
+                  Finding homes that become memories.</p>
+              </div>
+              
+              <div class="footer-social-icons">
+                <a href="https://www.facebook.com/" class="footer-social-icon" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                <a href="https://www.twitter.com/" class="footer-social-icon" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                <a href="https://www.instagram.com/" class="footer-social-icon" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                <a href="https://www.linkedin.com/" class="footer-social-icon" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+              </div>
+            </div>
+          </div>
+          
+          <div class="footer-column">
+            <h4>Quick Links</h4>
+            <ul class="footer-links">
+              <li><a href="index.html"><i class="fas fa-chevron-right"></i> Home</a></li>
+              <li><a href="aboutus.html"><i class="fas fa-chevron-right"></i> About Us</a></li>
+              <li><a href="services.html"><i class="fas fa-chevron-right"></i> Services</a></li>
+              <li><a href="contactus.html"><i class="fas fa-chevron-right"></i> Contact Us</a></li>
+            </ul>
+          </div>
+          
+          <div class="footer-column">
+            <h4>Our Services</h4>
+            <ul class="footer-links">
+              <li><a href="servicedetails.html"><i class="fas fa-home"></i> Property Sales</a></li>
+              <li><a href="servicedetails.html"><i class="fas fa-building"></i> Property Acquisition</a></li>
+              <li><a href="servicedetails.html"><i class="fas fa-chart-line"></i> Investment Consulting</a></li>
+              <li><a href="servicedetails.html"><i class="fas fa-search-dollar"></i> Property Valuation</a></li>
+            </ul>
+          </div>
+
+          <div class="footer-column house-image-column">
+            <div class="house-image-wrapper">
+              <img src="https://images.unsplash.com/photo-1568605114967-8130f3a36994?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" 
+                   alt="Modern Dream Home" 
+                   class="house-image">
+            </div>
+            <p class="house-caption">Find Your Dream Home Today</p>
+          </div>
+        </div>
+        <div class="footer-bottom">
+          <p>© Copyright Compass Housing Society 2024. All rights reserved.</p>
+        </div>
+      </footer>
+    </div>
+  </div>
+
+  <button class="back-to-top" aria-label="Back to top">
+    <i class="fas fa-arrow-up"></i>
+  </button>
+
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      const body = document.body;
+      const themeToggles = document.querySelectorAll(".theme-toggle");
+      const storedTheme = localStorage.getItem("compass-theme");
+
+      const themeToggle = () => {
+        const isDark = body.classList.toggle("dark-mode");
+        localStorage.setItem("compass-theme", isDark ? "dark" : "light");
+      };
+
+      if (storedTheme === "dark") {
+        body.classList.add("dark-mode");
+      }
+
+      themeToggles.forEach(toggle => {
+        toggle.addEventListener("click", themeToggle);
+        toggle.addEventListener("keypress", (e) => {
+          if (e.key === "Enter" || e.key === " ") {
+            themeToggle();
+          }
+        });
+      });
+
+      const menuToggle = document.querySelector(".menu-toggle");
+      const navMenu = document.querySelector(".nav-menu");
+
+      function closeMenu() {
+        if (navMenu) navMenu.classList.remove("nav-open");
+      }
+
+      if (menuToggle && navMenu) {
+        menuToggle.addEventListener("click", function () {
+          navMenu.classList.toggle("nav-open");
+          const isOpen = navMenu.classList.contains("nav-open");
+          menuToggle.setAttribute("aria-expanded", isOpen);
+          menuToggle.innerHTML = isOpen ? "✕" : "☰";
+        });
+
+        document.addEventListener('click', function(event) {
+          const isClickInsideMenu = navMenu.contains(event.target);
+          const isClickOnToggle = menuToggle.contains(event.target);
+          const isClickOnMobileActions = document.querySelector('.mobile-actions').contains(event.target);
+          
+          if (window.innerWidth <= 1030 && !isClickInsideMenu && !isClickOnToggle && !isClickOnMobileActions && navMenu.classList.contains('nav-open')) {
+            closeMenu();
+            menuToggle.setAttribute("aria-expanded", "false");
+            menuToggle.innerHTML = "☰";
+          }
+        });
+
+        document.addEventListener('keydown', function(event) {
+          if (event.key === 'Escape' && window.innerWidth <= 1030 && navMenu.classList.contains('nav-open')) {
+            closeMenu();
+            menuToggle.setAttribute("aria-expanded", "false");
+            menuToggle.innerHTML = "☰";
+          }
+        });
+      }
+
+      const dropdownItems = document.querySelectorAll(".nav-item.dropdown > .nav-link-custom");
+
+      dropdownItems.forEach(link => {
+        link.addEventListener("click", function (e) {
+          e.preventDefault();
+          const parent = this.parentElement;
+
+          document.querySelectorAll(".nav-item.dropdown.open").forEach(item => {
+            if (item !== parent) {
+              item.classList.remove("open");
+            }
+          });
+
+          parent.classList.toggle("open");
+        });
+      });
+
+      const normalLinks = document.querySelectorAll(".nav-item:not(.dropdown) .nav-link-custom, .nav-item:not(.dropdown) a");
+
+      normalLinks.forEach(l => {
+        l.addEventListener("click", function () {
+          if (window.innerWidth <= 1030) {
+            closeMenu();
+            menuToggle.setAttribute("aria-expanded", "false");
+            menuToggle.innerHTML = "☰";
+          }
+        });
+      });
+
+      const backToTopButton = document.querySelector('.back-to-top');
+
+      window.addEventListener('scroll', function() {
+        if (window.pageYOffset > 300) {
+          backToTopButton.classList.add('show');
+        } else {
+          backToTopButton.classList.remove('show');
+        }
+      });
+
+      backToTopButton.addEventListener('click', function() {
+        window.scrollTo({
+          top: 0,
+          behavior: 'smooth'
+        });
+      });
+
+      const faqItems = document.querySelectorAll('.faq-item');
+
+      faqItems.forEach(item => {
+        const question = item.querySelector('.faq-question');
+        
+        question.addEventListener('click', () => {
+          const isActive = item.classList.contains('active');
+          
+          faqItems.forEach(otherItem => {
+            otherItem.classList.remove('active');
+          });
+          
+          if (!isActive) {
+            item.classList.add('active');
+          }
+        });
+      });
+
+      window.addEventListener("resize", () => {
+        if (window.innerWidth > 1030) {
+          closeMenu();
+          if (menuToggle) {
+            menuToggle.setAttribute("aria-expanded", "false");
+            menuToggle.innerHTML = "☰";
+          }
+          document.querySelectorAll(".nav-item.dropdown.open").forEach(item => {
+            item.classList.remove("open");
+          });
+        }
+      });
+    });
+  </script>
+</body>
+</html>

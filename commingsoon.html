@@ -1,0 +1,1675 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Coming Soon | Compass Housing Society</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    :root {
+      --primary: #6A5337;
+      --accent: #C69050;
+      --light: #FFFFFF;
+      --dark: #000000;
+      --dark-bg: #121212;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      color: var(--dark);
+      background-color: var(--light);
+      transition: background-color 0.3s, color 0.3s;
+      overflow-x: hidden;
+    }
+
+    h1 { font-size: 46px; line-height: 1.2; font-weight: 800; }
+    h2 { font-size: 36px; line-height: 1.3; font-weight: 700; }
+    h3 { font-size: 24px; line-height: 1.4; font-weight: 600; }
+    h4, h5, h6 { font-size: 20px; line-height: 1.4; font-weight: 600; }
+    li, span, p { font-size: 18px; line-height: 1.6; font-weight: 400; }
+    a { text-decoration: none; color: inherit; }
+    ul { list-style: none; padding-left: 0; margin-bottom: 0; }
+
+    body::after {
+      content: "";
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background-image: url("Images/transparent-logo.jpeg");
+      background-repeat: no-repeat;
+      background-position: center;
+      background-size: 570px auto;
+      opacity: 0.10;
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    .page-wrapper {
+      max-width: 1920px;
+      margin: 0 auto;
+      min-height: 100vh;
+      position: relative;
+      overflow-x: hidden;
+      padding-top: 82px;
+      background-color: var(--light);
+      transition: background-color 0.3s;
+    }
+
+    .content-layer { 
+      position: relative; 
+      z-index: 1;
+      min-height: calc(100vh - 200px);
+    }
+
+    header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      z-index: 100;
+      background: var(--primary);
+      box-shadow: 0 8px 22px rgba(0, 0, 0, 0.55);
+      transition: background-color 0.3s;
+    }
+
+    .navbar-custom { 
+      display: flex; 
+      align-items: center; 
+      justify-content: space-between; 
+      gap: 24px; 
+      position: relative;
+      padding: 12px 40px;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-weight: 800;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      white-space: nowrap;
+      color: var(--light);
+    }
+
+    .brand img { 
+      width: 58px; 
+      height: 58px; 
+      object-fit: cover; 
+      border-radius: 8px;
+      border: 2px solid var(--light); 
+      opacity: 0.97; 
+      background: transparent; 
+    }
+
+    .nav-menu { 
+      display: flex; 
+      align-items: center; 
+      gap: 24px; 
+      flex: 1; 
+      justify-content: center; 
+      flex-wrap: wrap; 
+    }
+
+    .nav-item { position: relative; }
+    .nav-link-custom {
+      color: var(--light);
+      padding: 4px 0;
+      opacity: 0.9;
+      position: relative;
+      cursor: pointer;
+      display: inline-block;
+      transition: color 0.25s ease, opacity 0.25s ease;
+      font-weight: 500;
+    }
+
+    .nav-link-custom::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      bottom: -3px;
+      width: 0%;
+      height: 2px;
+      background-color: var(--accent);
+      transition: width 0.25s ease;
+    }
+
+    .nav-link-custom:hover::after { width: 100%; }
+    .dropdown-toggle-custom::after { content: " ▾"; position: static; width: auto; height: auto; background: none; margin-left: 4px; }
+
+    .dropdown-menu-custom {
+      position: absolute;
+      left: 0;
+      top: calc(100% + 6px);
+      background-color: var(--primary);
+      border-radius: 10px;
+      border: 1px solid rgba(248, 250, 252, 0.12);
+      min-width: 190px;
+      display: none;
+      padding: 6px 0;
+      z-index: 120;
+      box-shadow: 0 12px 20px rgba(0, 0, 0, 0.6);
+    }
+
+    .dropdown-menu-custom li a {
+      display: block;
+      padding: 8px 18px;
+      color: var(--light);
+      white-space: nowrap;
+      opacity: 0.9;
+      transition: background-color 0.25s ease, opacity 0.25s ease, color 0.25s ease;
+      font-weight: 500;
+    }
+
+    .dropdown-menu-custom li a:hover { background-color: rgba(243, 243, 250, 0.15); opacity: 1; color: var(--accent); }
+    .nav-item.dropdown.open>.dropdown-menu-custom { display: block; }
+
+    .nav-actions { 
+      display: flex; 
+      align-items: center; 
+      gap: 12px; 
+      margin-left: auto; 
+    }
+
+    .btn-animated { 
+      transition: transform 0.25s ease, box-shadow 0.25s ease, filter 0.25s ease; 
+      box-shadow: 0 6px 16px rgba(0, 0, 0, 0.45); 
+    }
+
+    .btn-animated:hover { 
+      transform: translateY(-2px); 
+      box-shadow: 0 10px 26px rgba(0, 0, 0, 0.7); 
+      filter: brightness(0.96); 
+    }
+
+    .btn-register {
+      background: var(--accent);
+      color: var(--dark);
+      border: none;
+      padding: 8px 15px;
+      border-radius: 999px;
+      font-weight: 600;
+      cursor: pointer;
+      white-space: nowrap;
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-size: 16px;
+    }
+
+    .theme-toggle {
+      position: relative;
+      width: 70px;
+      height: 34px;
+      border-radius: 34px;
+      background: linear-gradient(145deg, #4a4a4a, #2a2a2a);
+      border: 2px solid rgba(255, 255, 255, 0.3);
+      cursor: pointer;
+      transition: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+      box-shadow: 
+        inset 0 2px 4px rgba(0, 0, 0, 0.3),
+        0 4px 12px rgba(0, 0, 0, 0.25);
+      overflow: hidden;
+    }
+
+    .theme-toggle::before {
+      content: '';
+      position: absolute;
+      top: 3px;
+      left: 3px;
+      width: 26px;
+      height: 26px;
+      background: linear-gradient(145deg, #FFD700, #FFA500);
+      border-radius: 50%;
+      transition: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+      z-index: 2;
+      box-shadow: 
+        0 2px 4px rgba(0, 0, 0, 0.3),
+        inset 0 -1px 2px rgba(255, 255, 255, 0.2);
+    }
+
+    .theme-toggle::after {
+      content: '☀️';
+      position: absolute;
+      top: 50%;
+      right: 10px;
+      transform: translateY(-50%);
+      font-size: 14px;
+      opacity: 0.9;
+      filter: drop-shadow(0 1px 2px rgba(0, 0, 0, 0.3));
+      transition: all 0.4s ease;
+    }
+
+    .theme-toggle .moon {
+      position: absolute;
+      top: 50%;
+      left: 10px;
+      transform: translateY(-50%);
+      font-size: 14px;
+      opacity: 0.3;
+      filter: drop-shadow(0 1px 2px rgba(0, 0, 0, 0.3));
+      transition: all 0.4s ease;
+    }
+
+    .menu-toggle {
+      display: none;
+      border: 1px solid var(--light);
+      background: transparent;
+      font-size: 22px;
+      line-height: 1;
+      cursor: pointer;
+      color: var(--light);
+      padding: 4px 10px;
+      border-radius: 4px;
+    }
+
+    .mobile-actions {
+      display: none;
+      align-items: center;
+      gap: 12px;
+      margin-left: auto;
+    }
+
+    /* Coming Soon Page Specific Styles - ENHANCED SIZES */
+    .coming-soon-section {
+      min-height: calc(100vh - 300px);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 100px 20px;
+      text-align: center;
+      position: relative;
+      background: linear-gradient(135deg, rgba(106, 83, 55, 0.05) 0%, rgba(198, 144, 80, 0.05) 100%);
+    }
+
+    .coming-soon-content {
+      max-width: 1100px;
+      margin: 0 auto;
+      position: relative;
+      z-index: 2;
+    }
+
+    .coming-soon-badge {
+      display: inline-block;
+      padding: 16px 40px;
+      background: var(--accent);
+      color: var(--dark);
+      border-radius: 50px;
+      font-weight: 800;
+      font-size: 20px;
+      letter-spacing: 4px;
+      margin-bottom: 40px;
+      box-shadow: 0 15px 40px rgba(198, 144, 80, 0.4);
+      animation: pulse 2s infinite;
+    }
+
+    @keyframes pulse {
+      0% { transform: scale(1); }
+      50% { transform: scale(1.08); }
+      100% { transform: scale(1); }
+    }
+
+    .coming-soon-title {
+      font-size: 96px;
+      color: var(--primary);
+      margin-bottom: 30px;
+      font-weight: 900;
+      line-height: 1.1;
+      letter-spacing: -1px;
+    }
+
+    .coming-soon-title span {
+      color: var(--accent);
+      position: relative;
+    }
+
+    .coming-soon-title span::after {
+      content: '';
+      position: absolute;
+      bottom: 10px;
+      left: 0;
+      width: 100%;
+      height: 12px;
+      background: rgba(198, 144, 80, 0.3);
+      z-index: -1;
+    }
+
+    .coming-soon-description {
+      font-size: 26px;
+      color: #666;
+      margin-bottom: 50px;
+      max-width: 800px;
+      margin-left: auto;
+      margin-right: auto;
+      line-height: 1.7;
+      font-weight: 400;
+    }
+
+    .countdown-section {
+      margin: 70px 0;
+    }
+
+    .countdown-title {
+      font-size: 32px;
+      color: var(--primary);
+      margin-bottom: 40px;
+      font-weight: 700;
+    }
+
+    .countdown-timer {
+      display: flex;
+      justify-content: center;
+      gap: 30px;
+      flex-wrap: wrap;
+      max-width: 900px;
+      margin: 0 auto;
+    }
+
+    .countdown-item {
+      background: white;
+      border-radius: 20px;
+      padding: 40px 30px;
+      min-width: 160px;
+      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.15);
+      transition: all 0.3s ease;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .countdown-item:hover {
+      transform: translateY(-15px);
+      box-shadow: 0 30px 70px rgba(0, 0, 0, 0.2);
+    }
+
+    .countdown-item::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 8px;
+      background: var(--accent);
+    }
+
+    .countdown-number {
+      font-size: 72px;
+      font-weight: 900;
+      color: var(--primary);
+      line-height: 1;
+      margin-bottom: 15px;
+      display: block;
+    }
+
+    .countdown-label {
+      font-size: 20px;
+      color: #666;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+    }
+
+    .coming-soon-actions {
+      display: flex;
+      gap: 30px;
+      justify-content: center;
+      flex-wrap: wrap;
+      margin-bottom: 60px;
+    }
+
+    /* Consistent button styling with Contact Us page */
+    .coming-soon-btn {
+      background: var(--accent);
+      color: var(--dark);
+      border: none;
+      padding: 20px 55px;
+      border-radius: 50px;
+      font-size: 20px;
+      font-weight: 700;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      box-shadow: 0 12px 30px rgba(198, 144, 80, 0.4);
+      font-family: 'Plus Jakarta Sans', sans-serif;
+    }
+
+    .coming-soon-btn:hover {
+      background: #d9a566;
+      transform: translateY(-4px);
+      box-shadow: 0 18px 45px rgba(198, 144, 80, 0.5);
+    }
+
+    .coming-soon-btn i {
+      font-size: 22px;
+    }
+
+    .coming-soon-btn-secondary {
+      padding: 20px 55px;
+      background: transparent;
+      color: var(--primary);
+      border: 3px solid var(--primary);
+      border-radius: 50px;
+      font-size: 20px;
+      font-weight: 700;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      font-family: 'Plus Jakarta Sans', sans-serif;
+    }
+
+    .coming-soon-btn-secondary:hover {
+      background: rgba(106, 83, 55, 0.1);
+      transform: translateY(-4px);
+    }
+
+    .coming-soon-btn-secondary i {
+      font-size: 22px;
+    }
+
+    .newsletter-section {
+      background: white;
+      padding: 60px;
+      border-radius: 30px;
+      max-width: 800px;
+      margin: 0 auto;
+      box-shadow: 0 25px 60px rgba(0, 0, 0, 0.15);
+      border: 3px solid rgba(106, 83, 55, 0.1);
+    }
+
+    .newsletter-title {
+      font-size: 36px;
+      color: var(--primary);
+      margin-bottom: 20px;
+      font-weight: 800;
+    }
+
+    .newsletter-description {
+      font-size: 20px;
+      color: #666;
+      margin-bottom: 40px;
+      max-width: 600px;
+      margin-left: auto;
+      margin-right: auto;
+      line-height: 1.6;
+    }
+
+    .newsletter-form {
+      display: flex;
+      gap: 15px;
+      max-width: 600px;
+      margin: 0 auto;
+    }
+
+    .newsletter-input {
+      flex: 1;
+      padding: 22px 30px;
+      border: 3px solid #ddd;
+      border-radius: 50px;
+      font-size: 18px;
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      transition: all 0.3s ease;
+    }
+
+    .newsletter-input:focus {
+      outline: none;
+      border-color: var(--accent);
+      box-shadow: 0 0 0 4px rgba(198, 144, 80, 0.2);
+    }
+
+    .newsletter-btn {
+      padding: 22px 45px;
+      background: var(--accent);
+      color: var(--dark);
+      border: none;
+      border-radius: 50px;
+      font-size: 18px;
+      font-weight: 700;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      white-space: nowrap;
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      box-shadow: 0 8px 20px rgba(198, 144, 80, 0.3);
+    }
+
+    .newsletter-btn:hover {
+      background: #d9a566;
+      transform: translateY(-3px);
+      box-shadow: 0 12px 25px rgba(198, 144, 80, 0.4);
+    }
+
+    .progress-section {
+      margin-top: 80px;
+    }
+
+    .progress-title {
+      font-size: 28px;
+      color: var(--primary);
+      margin-bottom: 35px;
+      font-weight: 700;
+    }
+
+    .progress-bar-container {
+      max-width: 700px;
+      margin: 0 auto;
+      background: #f5f5f5;
+      border-radius: 15px;
+      height: 16px;
+      overflow: hidden;
+      margin-bottom: 25px;
+    }
+
+    .progress-bar {
+      height: 100%;
+      background: linear-gradient(90deg, var(--primary), var(--accent));
+      border-radius: 15px;
+      width: 75%;
+      position: relative;
+      transition: width 2s ease;
+    }
+
+    .progress-text {
+      display: flex;
+      justify-content: space-between;
+      max-width: 700px;
+      margin: 0 auto;
+      font-size: 18px;
+      color: #666;
+      font-weight: 600;
+    }
+
+    .social-section {
+      margin-top: 80px;
+    }
+
+    .social-title {
+      font-size: 28px;
+      color: var(--primary);
+      margin-bottom: 40px;
+      font-weight: 700;
+    }
+
+    .social-icons {
+      display: flex;
+      gap: 30px;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    .social-icon {
+      width: 80px;
+      height: 80px;
+      border-radius: 50%;
+      background: var(--primary);
+      color: white;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 32px;
+      transition: all 0.3s ease;
+      box-shadow: 0 15px 30px rgba(106, 83, 55, 0.3);
+    }
+
+    .social-icon:hover {
+      background: var(--accent);
+      color: var(--dark);
+      transform: translateY(-8px) scale(1.15);
+      box-shadow: 0 20px 40px rgba(198, 144, 80, 0.4);
+    }
+
+    .site-footer {
+      background: var(--primary);
+      color: var(--light);
+      width: 100%;
+      transition: background-color 0.3s;
+      padding: 30px 0 20px;
+      position: relative;
+      margin-top: 0;
+    }
+
+    .footer-content {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 20px;
+      gap: 30px;
+    }
+
+    .footer-column {
+      margin-bottom: 15px;
+    }
+
+    .footer-brand-column {
+      grid-column: span 2;
+    }
+
+    .footer-brand {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 15px;
+    }
+
+    .footer-brand-text h3 {
+      font-size: 24px;
+      font-weight: 700;
+      margin-bottom: 12px;
+      color: var(--light);
+    }
+
+    .footer-brand-text p {
+      font-size: 15px;
+      opacity: 0.9;
+      max-width: 350px;
+      margin-bottom: 20px;
+      line-height: 1.6;
+      color: var(--light);
+    }
+
+    .footer-social-icons {
+      display: flex;
+      gap: 12px;
+      margin-top: 10px;
+    }
+
+    .footer-social-icon {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.1);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--light);
+      font-size: 18px;
+      transition: all 0.3s ease;
+      border: 1px solid rgba(255, 255, 255, 0.2);
+    }
+
+    .footer-social-icon:hover {
+      background: var(--accent);
+      color: var(--dark);
+      transform: translateY(-3px);
+    }
+
+    .footer-column h4 {
+      font-size: 20px;
+      font-weight: 700;
+      margin-bottom: 20px;
+      color: var(--light);
+      position: relative;
+      padding-bottom: 8px;
+    }
+
+    .footer-links {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    .footer-links li {
+      margin-bottom: 12px;
+    }
+
+    .footer-links li a {
+      color: rgba(255, 255, 255, 0.85);
+      text-decoration: none;
+      transition: all 0.3s ease;
+      display: inline-block;
+      font-size: 15px;
+      font-weight: 500;
+    }
+
+    .footer-links li a:hover {
+      color: var(--accent);
+      transform: translateX(5px);
+    }
+
+    .footer-links li i {
+      margin-right: 8px;
+      color: var(--accent);
+      width: 16px;
+      text-align: center;
+    }
+
+    .house-image-column {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .house-image-wrapper {
+      width: 100%;
+      height: 180px;
+      border-radius: 12px;
+      overflow: hidden;
+      position: relative;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+      border: 3px solid var(--accent);
+    }
+
+    .house-image {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.5s ease;
+    }
+
+    .house-image:hover {
+      transform: scale(1.05);
+    }
+
+    .house-caption {
+      margin-top: 15px;
+      text-align: center;
+      color: var(--light);
+      font-size: 16px;
+      font-weight: 500;
+      opacity: 0.9;
+    }
+
+    .footer-bottom {
+      margin-top: 20px;
+      text-align: center;
+      font-size: 14px;
+      opacity: 0.8;
+      padding-top: 15px;
+      border-top: 1px solid rgba(255, 255, 255, 0.2);
+      width: 100%;
+      grid-column: 1 / -1;
+    }
+
+    .footer-bottom p {
+      color: var(--light);
+    }
+
+    .back-to-top {
+      position: fixed;
+      bottom: 30px;
+      right: 30px;
+      width: 50px;
+      height: 50px;
+      background-color: var(--primary);
+      color: white;
+      border: none;
+      border-radius: 50%;
+      font-size: 24px;
+      cursor: pointer;
+      z-index: 99;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      opacity: 0;
+      visibility: hidden;
+      transition: all 0.3s ease;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    }
+
+    .back-to-top.show {
+      opacity: 1;
+      visibility: visible;
+    }
+
+    .back-to-top:hover {
+      background-color: var(--accent);
+      transform: translateY(-3px);
+      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+    }
+
+    /* Dark Mode Styles - ALL TEXT VISIBLE IN WHITE */
+    body.dark-mode {
+      background-color: var(--dark-bg);
+      color: #ffffff;
+    }
+
+    body.dark-mode .page-wrapper {
+      background-color: var(--dark-bg);
+    }
+
+    body.dark-mode header,
+    body.dark-mode .site-footer {
+      background-color: #1a1a1a;
+    }
+
+    body.dark-mode .nav-menu {
+      background: #1a1a1a;
+    }
+
+    body.dark-mode .dropdown-menu-custom {
+      background-color: #2a2a2a;
+      border-color: rgba(255, 255, 255, 0.1);
+    }
+
+    body.dark-mode .brand img {
+      border-color: #ffffff;
+    }
+
+    body.dark-mode .brand {
+      color: #ffffff;
+    }
+
+    body.dark-mode .nav-link-custom {
+      color: #ffffff;
+    }
+
+    body.dark-mode .dropdown-menu-custom li a {
+      color: #ffffff;
+    }
+
+    body.dark-mode .footer-social-icon {
+      background: rgba(255, 255, 255, 0.1);
+      color: #ffffff;
+      border-color: rgba(255, 255, 255, 0.2);
+    }
+
+    body.dark-mode .footer-social-icon:hover {
+      background: var(--accent);
+      color: var(--dark);
+    }
+
+    body.dark-mode .theme-toggle {
+      background: linear-gradient(145deg, #2a2a2a, #1a1a1a);
+      border-color: rgba(255, 255, 255, 0.15);
+    }
+
+    body.dark-mode .theme-toggle::before {
+      left: calc(100% - 29px);
+      background: linear-gradient(145deg, #e0e0e0, #a0a0a0);
+      box-shadow: 
+        0 0 8px rgba(255, 255, 255, 0.2),
+        inset 0 -1px 2px rgba(0, 0, 0, 0.2);
+    }
+
+    body.dark-mode .theme-toggle::after {
+      opacity: 0.3;
+    }
+
+    body.dark-mode .theme-toggle .moon {
+      opacity: 0.9;
+    }
+
+    /* Dark Mode - ALL TEXT WHITE FOR VISIBILITY */
+    
+
+    body.dark-mode .coming-soon-title {
+      color: #ffffff;
+    }
+
+    body.dark-mode .coming-soon-description {
+      color: #ffffff;
+    }
+
+    body.dark-mode .countdown-title {
+      color: #ffffff;
+    }
+
+    body.dark-mode .countdown-item {
+      background: #2a2a2a;
+      border: 2px solid #444;
+    }
+
+    body.dark-mode .countdown-number {
+      color: var(--accent);
+    }
+
+    body.dark-mode .countdown-label {
+      color: #ffffff;
+    }
+
+    body.dark-mode .coming-soon-btn {
+      background: var(--accent);
+      color: var(--dark);
+    }
+
+    body.dark-mode .coming-soon-btn-secondary {
+      color: #ffffff;
+      border-color: var(--accent);
+    }
+
+    body.dark-mode .coming-soon-btn-secondary:hover {
+      background: rgba(198, 144, 80, 0.2);
+    }
+
+    body.dark-mode .newsletter-section {
+      background: #2a2a2a;
+      border-color: rgba(255, 255, 255, 0.1);
+    }
+
+    body.dark-mode .newsletter-title {
+      color: #ffffff;
+    }
+
+    body.dark-mode .newsletter-description {
+      color: #ffffff;
+    }
+
+    body.dark-mode .newsletter-input {
+      background: #1a1a1a;
+      border-color: #444;
+      color: #ffffff;
+    }
+
+    body.dark-mode .newsletter-input:focus {
+      border-color: var(--accent);
+      box-shadow: 0 0 0 4px rgba(198, 144, 80, 0.2);
+    }
+
+    body.dark-mode .newsletter-btn {
+      background: var(--accent);
+      color: var(--dark);
+    }
+
+    body.dark-mode .progress-title {
+      color: #ffffff;
+    }
+
+    body.dark-mode .progress-bar-container {
+      background: #2a2a2a;
+    }
+
+    body.dark-mode .progress-text {
+      color: #ffffff;
+    }
+
+    body.dark-mode .social-title {
+      color: #ffffff;
+    }
+
+    body.dark-mode .social-icon {
+      background: var(--accent);
+      color: var(--dark);
+    }
+
+    body.dark-mode .social-icon:hover {
+      background: #d9a566;
+      color: var(--dark);
+    }
+
+    body.dark-mode .footer-brand-text h3,
+    body.dark-mode .footer-column h4,
+    body.dark-mode .house-caption,
+    body.dark-mode .footer-bottom p {
+      color: #ffffff;
+    }
+
+    body.dark-mode .footer-brand-text p,
+    body.dark-mode .footer-links li a {
+      color: rgba(255, 255, 255, 0.9);
+    }
+
+    body.dark-mode .back-to-top {
+      background-color: var(--accent);
+      color: var(--dark);
+    }
+
+    /* Responsive Styles */
+    @media (max-width: 1030px) {
+      .navbar-custom { 
+        padding: 10px 16px;
+        gap: 10px; 
+        justify-content: space-between;
+        flex-wrap: wrap;
+      }
+      .brand {
+        order: 1;
+        flex: 1;
+      }
+      .nav-actions.desktop-actions {
+        display: none;
+      }
+      .mobile-actions {
+        display: flex;
+        order: 2;
+      }
+      .menu-toggle {
+        display: inline-flex;
+        order: 3;
+      }
+      .nav-menu {
+        position: fixed;
+        top: 0;
+        right: -280px;
+        width: 280px;
+        height: auto;
+        max-height: 90vh;
+        flex-direction: column;
+        align-items: flex-start;
+        justify-content: flex-start;
+        background: var(--primary);
+        padding: 20px;
+        border-radius: 0 0 0 16px;
+        box-shadow: -12px 0 30px rgba(0, 0, 0, 0.85);
+        z-index: 110;
+        gap: 12px;
+        transition: right 0.3s ease;
+        border: 1px solid rgba(248, 250, 252, 0.6);
+        overflow-y: auto;
+        margin-top: 0;
+      }
+      body.dark-mode .nav-menu {
+        background: #1a1a1a;
+      }
+      .nav-menu.nav-open { right: 0; }
+      .nav-item { width: 100%; }
+      .nav-link-custom { width: 100%; padding: 10px 0; }
+      .dropdown-menu-custom { 
+        position: static; 
+        margin-top: 4px; 
+        background: rgba(255, 255, 255, 0.05); 
+        border-radius: 8px; 
+        border: none; 
+        box-shadow: none; 
+        padding: 0 0 4px 10px; 
+        display: none;
+      }
+      body.dark-mode .dropdown-menu-custom {
+        background: rgba(255, 255, 255, 0.05);
+      }
+      .dropdown-menu-custom li a { padding: 8px 0; font-size: 15px; opacity: 0.85; }
+      .nav-item.dropdown.open>.dropdown-menu-custom { display: block; }
+      
+      .coming-soon-title {
+        font-size: 72px;
+      }
+      
+      .countdown-number {
+        font-size: 56px;
+      }
+      
+      .countdown-item {
+        min-width: 140px;
+        padding: 30px 20px;
+      }
+      
+      .footer-content {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+    
+    @media (max-width: 768px) {
+      .coming-soon-title {
+        font-size: 56px;
+      }
+      
+      .coming-soon-description {
+        font-size: 22px;
+      }
+      
+      .coming-soon-actions {
+        flex-direction: column;
+        align-items: center;
+        gap: 20px;
+      }
+      
+      .coming-soon-btn,
+      .coming-soon-btn-secondary {
+        width: 100%;
+        max-width: 350px;
+        padding: 18px 40px;
+      }
+      
+      .newsletter-form {
+        flex-direction: column;
+      }
+      
+      .newsletter-input,
+      .newsletter-btn {
+        width: 100%;
+      }
+      
+      .newsletter-section {
+        padding: 40px 30px;
+      }
+      
+      .countdown-timer {
+        gap: 20px;
+      }
+      
+      .countdown-item {
+        min-width: 120px;
+        padding: 25px 15px;
+      }
+      
+      .countdown-number {
+        font-size: 48px;
+      }
+      
+      .countdown-label {
+        font-size: 18px;
+      }
+      
+      .social-icon {
+        width: 70px;
+        height: 70px;
+        font-size: 28px;
+      }
+      
+      .footer-content {
+        grid-template-columns: 1fr;
+        text-align: center;
+      }
+      
+      .footer-brand-column {
+        grid-column: span 1;
+      }
+      
+      .footer-brand,
+      .footer-column {
+        align-items: center;
+        text-align: center;
+      }
+    }
+    
+    @media (max-width: 576px) {
+      .page-wrapper { padding-top: 60px; }
+      .brand span { font-size: 14px; }
+      .brand img { width: 40px; height: 40px; }
+      .nav-menu {
+        width: 250px;
+        max-height: 85vh;
+        top: 60px;
+        right: -250px;
+      }
+      
+      .coming-soon-section {
+        padding: 80px 20px 60px;
+      }
+      
+      .coming-soon-title {
+        font-size: 25px;
+      }
+      
+      .coming-soon-badge {
+        font-size: 16px;
+        padding: 12px 30px;
+        letter-spacing: 2px;
+      }
+      
+      .coming-soon-description {
+        font-size: 18px;
+      }
+      
+      .countdown-title {
+        font-size: 26px;
+      }
+      
+      .countdown-timer {
+        gap: 15px;
+      }
+      
+      .countdown-item {
+        min-width: 90px;
+        padding: 20px 12px;
+      }
+      
+      .countdown-number {
+        font-size: 36px;
+      }
+      
+      .countdown-label {
+        font-size: 14px;
+        letter-spacing: 1px;
+      }
+      
+      .newsletter-title {
+        font-size: 28px;
+      }
+      
+      .newsletter-description {
+        font-size: 16px;
+      }
+      
+      .progress-title,
+      .social-title {
+        font-size: 24px;
+      }
+      
+      .social-icon {
+        width: 60px;
+        height: 60px;
+        font-size: 24px;
+      }
+      
+      .back-to-top {
+        width: 45px;
+        height: 45px;
+        font-size: 20px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="page-wrapper">
+    <div class="content-layer">
+      <header>
+        <nav class="navbar-custom">
+          <div class="brand">
+            <img src="Images/logo.jpeg" alt="Compass Housing Society Logo">
+            <span>Compass Housing<br> Society</span>
+          </div>
+
+          <div class="mobile-actions">
+            <div class="theme-toggle" aria-label="Toggle dark / light mode">
+              <span class="moon">🌙</span>
+            </div>
+            <a href="login.html">
+              <button class="btn-register btn-animated" type="button">Get in touch</button>
+            </a>
+          </div>
+
+          <ul class="nav-menu">
+            <li class="nav-item">
+              <a href="index.html" class="nav-link-custom">Home 1</a>
+            </li>
+            <li class="nav-item">
+              <a href="home2.html" class="nav-link-custom">Home 2</a>
+            </li>
+            <li class="nav-item">
+              <a href="aboutus.html" class="nav-link-custom">About Us</a>
+            </li>
+            <li class="nav-item dropdown">
+              <span class="nav-link-custom dropdown-toggle-custom">Services</span>
+              <ul class="dropdown-menu-custom">
+                <li><a href="services.html">Service</a></li>
+                <li><a href="servicedetails.html">Service Details</a></li>
+              </ul>
+            </li>
+            <li class="nav-item dropdown">
+              <span class="nav-link-custom dropdown-toggle-custom">Blog</span>
+              <ul class="dropdown-menu-custom">
+                <li><a href="blog.html">Blog</a></li>
+                <li><a href="blogdetails.html">Blog Details</a></li>
+              </ul>
+            </li>
+            <li class="nav-item dropdown">
+              <span class="nav-link-custom dropdown-toggle-custom">Contact Us</span>
+              <ul class="dropdown-menu-custom">
+                <li><a href="contactus.html">Contact Us</a></li>
+                <li><a href="additionalpage.html">404</a></li>
+                <li><a href="pricing.html">Pricing</a></li>
+                <li><a href="commingsoon.html">Coming Soon</a></li>
+              </ul>
+            </li>
+          </ul>
+
+          <div class="nav-actions desktop-actions">
+            <div class="theme-toggle" aria-label="Toggle dark / light mode">
+              <span class="moon">🌙</span>
+            </div>
+            <a href="login.html">
+              <button class="btn-register btn-animated" type="button">Get in touch</button>
+            </a>
+          </div>
+
+          <button class="menu-toggle" type="button" aria-label="Toggle menu">☰</button>
+        </nav>
+      </header>
+
+      <main>
+        <!-- Coming Soon Section - ENHANCED SIZES -->
+        <section class="coming-soon-section">
+          <div class="coming-soon-content">
+            <div class="coming-soon-badge">COMING SOON</div>
+            
+            <h1 class="coming-soon-title">
+              Something Is Coming
+            </h1>
+            
+            <p class="coming-soon-description">
+              We're working tirelessly to bring you an revolutionary real estate experience. 
+              Get ready for something extraordinary!
+            </p>
+            
+            <div class="countdown-section">
+              <h3 class="countdown-title">Launching In</h3>
+              <div class="countdown-timer">
+                <div class="countdown-item">
+                  <span class="countdown-number" id="days">00</span>
+                  <span class="countdown-label">Days</span>
+                </div>
+                <div class="countdown-item">
+                  <span class="countdown-number" id="hours">00</span>
+                  <span class="countdown-label">Hours</span>
+                </div>
+                <div class="countdown-item">
+                  <span class="countdown-number" id="minutes">00</span>
+                  <span class="countdown-label">Minutes</span>
+                </div>
+                <div class="countdown-item">
+                  <span class="countdown-number" id="seconds">00</span>
+                  <span class="countdown-label">Seconds</span>
+                </div>
+              </div>
+            </div>
+            
+            <div class="coming-soon-actions">
+              <a href="index.html" class="coming-soon-btn">
+                <i class="fas fa-home"></i> Back to Homepage
+              </a>
+              
+            </div>
+            
+          </div>
+        </section>
+      </main>
+
+      <footer class="site-footer" id="contact">
+        <div class="footer-content">
+          <div class="footer-column">
+            <div class="footer-brand">
+              <div class="footer-brand-text">
+                <h3>Housing Society</h3>
+                <p>Your trusted partner in real estate.<br> 
+                  Finding homes that become memories.</p>
+              </div>
+              
+              <div class="footer-social-icons">
+                <a href="https://www.facebook.com/" class="footer-social-icon" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                <a href="https://www.twitter.com/" class="footer-social-icon" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                <a href="https://www.instagram.com/" class="footer-social-icon" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                <a href="https://www.linkedin.com/" class="footer-social-icon" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+              </div>
+            </div>
+          </div>
+          
+          <div class="footer-column">
+            <h4>Quick Links</h4>
+            <ul class="footer-links">
+              <li><a href="index.html"><i class="fas fa-chevron-right"></i> Home</a></li>
+              <li><a href="aboutus.html"><i class="fas fa-chevron-right"></i> About Us</a></li>
+              <li><a href="pricing.html"><i class="fas fa-chevron-right"></i> Pricing</a></li>
+              <li><a href="contactus.html"><i class="fas fa-chevron-right"></i> Contact Us</a></li>
+            </ul>
+          </div>
+          
+          <div class="footer-column">
+            <h4>Our Services</h4>
+            <ul class="footer-links">
+              <li><a href="servicedetails.html"><i class="fas fa-home"></i> Residential Sales</a></li>
+              <li><a href="servicedetails.html"><i class="fas fa-building"></i> Commercial Leasing</a></li>
+              <li><a href="servicedetails.html"><i class="fas fa-chart-line"></i> Investment Properties</a></li>
+              <li><a href="servicedetails.html"><i class="fas fa-search-dollar"></i> Property Valuation</a></li>
+            </ul>
+          </div>
+
+          <div class="footer-column house-image-column">
+            <div class="house-image-wrapper">
+              <img src="https://images.unsplash.com/photo-1568605114967-8130f3a36994?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" 
+                   alt="Modern Dream Home" 
+                   class="house-image">
+            </div>
+            <p class="house-caption">Find Your Dream Home Today</p>
+          </div>
+        </div>
+        <div class="footer-bottom">
+          <p>© Copyright Compass Housing Society 2024. All rights reserved.</p>
+        </div>
+      </footer>
+    </div>
+  </div>
+
+  <button class="back-to-top" aria-label="Back to top">
+    <i class="fas fa-arrow-up"></i>
+  </button>
+
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      const body = document.body;
+      const themeToggles = document.querySelectorAll(".theme-toggle");
+      const storedTheme = localStorage.getItem("compass-theme");
+
+      const themeToggle = () => {
+        const isDark = body.classList.toggle("dark-mode");
+        localStorage.setItem("compass-theme", isDark ? "dark" : "light");
+      };
+
+      if (storedTheme === "dark") {
+        body.classList.add("dark-mode");
+      }
+
+      themeToggles.forEach(toggle => {
+        toggle.addEventListener("click", themeToggle);
+        toggle.addEventListener("keypress", (e) => {
+          if (e.key === "Enter" || e.key === " ") {
+            themeToggle();
+          }
+        });
+      });
+
+      const menuToggle = document.querySelector(".menu-toggle");
+      const navMenu = document.querySelector(".nav-menu");
+
+      function closeMenu() {
+        if (navMenu) navMenu.classList.remove("nav-open");
+      }
+
+      if (menuToggle && navMenu) {
+        menuToggle.addEventListener("click", function () {
+          navMenu.classList.toggle("nav-open");
+          const isOpen = navMenu.classList.contains("nav-open");
+          menuToggle.setAttribute("aria-expanded", isOpen);
+          menuToggle.innerHTML = isOpen ? "✕" : "☰";
+        });
+
+        document.addEventListener('click', function(event) {
+          const isClickInsideMenu = navMenu.contains(event.target);
+          const isClickOnToggle = menuToggle.contains(event.target);
+          const mobileActions = document.querySelector('.mobile-actions');
+          const isClickOnMobileActions = mobileActions ? mobileActions.contains(event.target) : false;
+          
+          if (window.innerWidth <= 1030 && !isClickInsideMenu && !isClickOnToggle && !isClickOnMobileActions && navMenu.classList.contains('nav-open')) {
+            closeMenu();
+            menuToggle.setAttribute("aria-expanded", "false");
+            menuToggle.innerHTML = "☰";
+          }
+        });
+
+        document.addEventListener('keydown', function(event) {
+          if (event.key === 'Escape' && window.innerWidth <= 1030 && navMenu.classList.contains('nav-open')) {
+            closeMenu();
+            menuToggle.setAttribute("aria-expanded", "false");
+            menuToggle.innerHTML = "☰";
+          }
+        });
+      }
+
+      const dropdownItems = document.querySelectorAll(".nav-item.dropdown > .nav-link-custom");
+
+      dropdownItems.forEach(link => {
+        link.addEventListener("click", function (e) {
+          e.preventDefault();
+          const parent = this.parentElement;
+
+          document.querySelectorAll(".nav-item.dropdown.open").forEach(item => {
+            if (item !== parent) {
+              item.classList.remove("open");
+            }
+          });
+
+          parent.classList.toggle("open");
+        });
+      });
+
+      const normalLinks = document.querySelectorAll(".nav-item:not(.dropdown) .nav-link-custom, .nav-item:not(.dropdown) a");
+
+      normalLinks.forEach(l => {
+        l.addEventListener("click", function () {
+          if (window.innerWidth <= 1030) {
+            closeMenu();
+            menuToggle.setAttribute("aria-expanded", "false");
+            menuToggle.innerHTML = "☰";
+          }
+        });
+      });
+
+      const backToTopButton = document.querySelector('.back-to-top');
+
+      window.addEventListener('scroll', function() {
+        if (window.pageYOffset > 300) {
+          backToTopButton.classList.add('show');
+        } else {
+          backToTopButton.classList.remove('show');
+        }
+      });
+
+      backToTopButton.addEventListener('click', function() {
+        window.scrollTo({
+          top: 0,
+          behavior: 'smooth'
+        });
+      });
+
+      // Countdown Timer Functionality
+      const launchDate = new Date();
+      launchDate.setDate(launchDate.getDate() + 30); // Set launch to 30 days from now
+
+      function updateCountdown() {
+        const now = new Date().getTime();
+        const distance = launchDate - now;
+
+        const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+        const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+        const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+        const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+        document.getElementById('days').textContent = days.toString().padStart(2, '0');
+        document.getElementById('hours').textContent = hours.toString().padStart(2, '0');
+        document.getElementById('minutes').textContent = minutes.toString().padStart(2, '0');
+        document.getElementById('seconds').textContent = seconds.toString().padStart(2, '0');
+
+        // Update progress based on countdown
+        const totalDays = 30;
+        const daysLeft = days;
+        const progress = ((totalDays - daysLeft) / totalDays) * 100;
+        
+        const progressBar = document.getElementById('progressBar');
+        const progressPercentage = document.getElementById('progressPercentage');
+        
+        const currentProgress = Math.min(75, Math.floor(progress)); // Cap at 75%
+        progressBar.style.width = currentProgress + '%';
+        progressPercentage.textContent = currentProgress + '%';
+
+        // If countdown is finished
+        if (distance < 0) {
+          clearInterval(countdownInterval);
+          document.querySelector('.countdown-title').textContent = "We're Live!";
+          document.querySelector('.coming-soon-badge').textContent = "NOW LIVE";
+          document.querySelector('.coming-soon-badge').style.background = '#4CAF50';
+          document.querySelector('.coming-soon-title').innerHTML = "We're Live!<br>Experience Our New Feature";
+        }
+      }
+
+      // Initialize countdown
+      updateCountdown();
+      const countdownInterval = setInterval(updateCountdown, 1000);
+
+      // Newsletter Form Functionality
+      const newsletterForm = document.getElementById('newsletterForm');
+      const emailInput = document.getElementById('emailInput');
+
+      if (newsletterForm) {
+        newsletterForm.addEventListener('submit', function(e) {
+          e.preventDefault();
+          const email = emailInput.value.trim();
+          
+          if (email && validateEmail(email)) {
+            // Simulate newsletter subscription
+            alert(`Thank you for subscribing with ${email}! You'll be the first to know when we launch.`);
+            emailInput.value = '';
+            
+            // Show success message
+            const successMessage = document.createElement('div');
+            successMessage.className = 'newsletter-success';
+            successMessage.innerHTML = `
+              <p style="color: #4CAF50; margin-top: 20px; font-weight: 600; font-size: 18px;">
+                <i class="fas fa-check-circle"></i> Successfully subscribed! Check your inbox.
+              </p>
+            `;
+            newsletterForm.appendChild(successMessage);
+            
+            setTimeout(() => {
+              successMessage.remove();
+            }, 5000);
+          } else {
+            alert('Please enter a valid email address.');
+            emailInput.focus();
+          }
+        });
+      }
+
+      function validateEmail(email) {
+        const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        return re.test(email);
+      }
+
+      // Animate countdown items on load
+      const countdownItems = document.querySelectorAll('.countdown-item');
+      countdownItems.forEach((item, index) => {
+        item.style.transform = 'translateY(30px)';
+        item.style.opacity = '0';
+        
+        setTimeout(() => {
+          item.style.transition = 'all 0.6s ease';
+          item.style.transform = 'translateY(0)';
+          item.style.opacity = '1';
+        }, 300 + (index * 150));
+      });
+
+      // Animate progress bar on load
+      const progressBar = document.getElementById('progressBar');
+      if (progressBar) {
+        progressBar.style.width = '0%';
+        
+        setTimeout(() => {
+          progressBar.style.transition = 'width 2s cubic-bezier(0.68, -0.55, 0.265, 1.55)';
+          progressBar.style.width = '75%';
+        }, 1000);
+      }
+
+      // Social icon hover effects
+      const socialIcons = document.querySelectorAll('.social-icon');
+      socialIcons.forEach(icon => {
+        icon.addEventListener('mouseenter', function() {
+          this.style.transform = 'translateY(-8px) scale(1.15)';
+        });
+        
+        icon.addEventListener('mouseleave', function() {
+          this.style.transform = 'translateY(0) scale(1)';
+        });
+      });
+
+      window.addEventListener("resize", () => {
+        if (window.innerWidth > 1030) {
+          closeMenu();
+          if (menuToggle) {
+            menuToggle.setAttribute("aria-expanded", "false");
+            menuToggle.innerHTML = "☰";
+          }
+          document.querySelectorAll(".nav-item.dropdown.open").forEach(item => {
+            item.classList.remove("open");
+          });
+        }
+      });
+    });
+  </script>
+</body>
+</html>
